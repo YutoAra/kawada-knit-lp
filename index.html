@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>休日の草刈りを、家族との時間に変える。| しばラク楽してねット！</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #3E3A39;
+  background-color: #FAF9F6;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  font-weight: 300;
+}
+h1, h2, h3 { font-weight: 500; }
+/* ── 共通 ── */
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.section-pad { padding: 100px 0; }
+.section-title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 56px;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 36px; height: 1px;
+  background: #5A7247;
+  margin: 20px auto 0;
+}
+.section-eyebrow {
+  display: block;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .22em; color: #5A7247;
+  text-align: center;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 32px;
+  transition: background .3s, box-shadow .3s, padding .3s;
+}
+.nav.scrolled {
+  background: rgba(250, 249, 246, 0.97);
+  box-shadow: 0 1px 0 rgba(0,0,0,.07);
+  padding: 14px 32px;
+}
+.nav-logo { font-size: 13px; font-weight: 500; letter-spacing: .12em; color: #fff; transition: color .3s; }
+.nav.scrolled .nav-logo { color: #3E3A39; }
+.nav-btn {
+  font-size: 12px; font-weight: 500; letter-spacing: .1em;
+  color: #3E3A39; background: #fff;
+  padding: 9px 22px; border-radius: 2px;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.nav-btn:hover, .nav.scrolled .nav-btn { background: #5A7247; color: #fff; }
+/* ═══════════════════════
+   01. HERO
+═══════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, #2a5c36 0%, #3d7a48 55%, #4e9458 100%);
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+/* 動画背景 */
+.hero-video-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* 動画の上に重ねる暗いオーバーレイ（テキスト可読性確保） */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15, 40, 18, 0.25);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+.hero-label {
+  display: inline-block;
+  font-size: clamp(18px, 3.2vw, 34px);
+  font-weight: 700;
+  letter-spacing: .28em;
+  color: #3a7d44;
+  background: #fff;
+  padding: 18px 48px;
+  border-radius: 100px;
+  margin-bottom: 44px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  text-indent: .28em;
+}
+.hero-tagline {
+  font-size: clamp(14px, 1.8vw, 20px);
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-indent: .24em;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0,0,0,.4);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-tagline::before,
+.hero-tagline::after {
+  content: '';
+  display: inline-block;
+  width: 32px; height: 2px;
+  background: rgba(255,255,255,.75);
+  flex-shrink: 0;
+  border-radius: 1px;
+}
+.hero-catch {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: #fff;
+  margin-bottom: 28px;
+  letter-spacing: .02em;
+  text-shadow: 0 2px 16px rgba(0,0,0,.45);
+}
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: rgba(255,255,255,.78);
+  font-weight: 300;
+  line-height: 1.95;
+  margin-bottom: 48px;
+  text-shadow: 0 1px 8px rgba(0,0,0,.4);
+}
+.hero-tags {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 44px;
+}
+@media (max-width: 640px) {
+  .hero-tags { grid-template-columns: repeat(2, auto); }
+}
+.hero-tag {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; letter-spacing: .06em;
+  color: #3a7d44;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+  white-space: nowrap;
+}
+.hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: #3a7d44;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hero-award {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #fff;
+  border-left: 4px solid #C9A83A;
+  padding: 14px 28px;
+  border-radius: 4px;
+  color: #7A6030;
+  font-size: 14px; font-weight: 500; letter-spacing: .06em;
+  box-shadow: 0 2px 16px rgba(0,0,0,.12);
+}
+/* ── hero下部のスペック帯 ── */
+.hero-specs {
+  display: flex; justify-content: center;
+  gap: 0;
+  margin-top: 64px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 48px;
+}
+.hero-spec {
+  padding: 0 36px;
+  border-right: 1px solid rgba(255,255,255,.15);
+  text-align: center;
+}
+.hero-spec:last-child { border-right: none; }
+.hero-spec-num {
+  font-size: clamp(22px, 3.2vw, 40px);
+  font-weight: 700; color: #fff;
+  line-height: 1; margin-bottom: 6px;
+  white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0,0,0,.4);
+}
+.hero-spec-label { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .12em; white-space: nowrap; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+@media (max-width: 500px) { .hero-specs { gap: 0; } .hero-spec { padding: 0 20px; } }
+/* ═══════════════════════
+   02. INTRO
+═══════════════════════ */
+/* intro：net.jpg を背景に */
+.intro {
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.72) 0%, rgba(248,251,245,.68) 100%),
+    url('net.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.intro-text {
+  max-width: 620px; margin: 0 auto;
+  text-align: center;
+  font-size: clamp(16px, 1.8vw, 19px);
+  line-height: 2.1;
+  color: #555;
+  font-weight: 300;
+}
+.intro-text strong { font-weight: 500; color: #3E3A39; }
+/* ═══════════════════════
+   03. PROBLEM
+═══════════════════════ */
+/* problem：斜め45°の単方向ストライプ */
+.problem {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(90,114,71,.05) 0, rgba(90,114,71,.05) 1px, transparent 1px, transparent 12px),
+    linear-gradient(160deg, #f5f8f2 0%, #faf9f6 50%, #f0ede6 100%);
+}
+.problem-lead {
+  max-width: 600px; margin: 0 auto 56px;
+  text-align: center;
+  font-size: 15px; color: #777; line-height: 2;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: #ddd8d0;
+  border: 2px solid #ddd8d0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+@media (max-width: 580px) { .problem-grid { grid-template-columns: 1fr; } }
+.problem-item {
+  background: linear-gradient(145deg, #ffffff 0%, #f7fbf4 100%);
+  padding: 44px 32px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.problem-item::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #C0392B 0%, rgba(192,57,43,0) 100%);
+}
+.problem-item-num {
+  font-size: clamp(80px, 12vw, 110px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(90, 114, 71, 0.10);
+  position: absolute;
+  top: 10px; right: 14px;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+.problem-item-title { font-size: 17px; font-weight: 500; color: #3E3A39; margin-bottom: 12px; line-height: 1.55; }
+.problem-item-body { font-size: 14px; color: #888; line-height: 1.9; font-weight: 300; }
+.problem-bridge {
+  margin: 64px -24px 0;
+  background: linear-gradient(135deg, #2a5c36 0%, #3d7a48 60%, #5A7247 100%);
+  padding: 56px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.problem-bridge-img {
+  text-align: center;
+  margin: 48px 0 0;
+  background: #FAF9F6;
+  padding: 40px 24px;
+}
+.problem-bridge-img img {
+  max-width: 640px;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 12px 48px rgba(0,0,0,.14);
+  display: inline-block;
+}
+.problem-bridge::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 60px solid #FAF9F6;
+}
+.problem-bridge-text {
+  font-size: clamp(22px, 4vw, 42px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .1em;
+  display: block;
+  text-shadow: 0 2px 12px rgba(0,0,0,.2);
+  position: relative;
+  z-index: 1;
+}
+.problem-bridge-text::after {
+  content: '';
+  display: block;
+  width: 48px; height: 3px;
+  background: rgba(255,255,255,.5);
+  margin: 20px auto 0;
+  border-radius: 2px;
+}
+/* ═══════════════════════
+   04. FEATURES
+   写真なし版：カラーパネル＋テキスト
+═══════════════════════ */
+/* features：縦糸のみ・タテ方向の繊維 */
+.features {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(90,114,71,.038) 0, rgba(90,114,71,.038) 1px, transparent 1px, transparent 9px),
+    linear-gradient(180deg, #f8fbf5 0%, #fff 40%, #f8fbf5 100%);
+}
+.feature-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #F0EDE8;
+  min-height: 360px;
+}
+.feature-item:last-child { border-bottom: none; }
+@media (max-width: 680px) { .feature-item { grid-template-columns: 1fr; } }
+/* カラーパネル側 */
+.feature-panel {
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-end;
+  padding: 48px 44px;
+  position: relative; overflow: hidden;
+}
+.fp1 { background: #2d5e38; }
+.fp2 { background: #4a6630; }
+.fp3 { background: #3a5c2a; }
+.fp4 { background: #5c6e3e; }
+.fp5 { background: #3d6645; }
+/* 背景の大きな番号 */
+.feature-panel::before {
+  content: attr(data-num);
+  position: absolute; right: -12px; top: -20px;
+  font-size: 160px; font-weight: 700;
+  color: rgba(255,255,255,.07);
+  line-height: 1; letter-spacing: 0;
+  pointer-events: none;
+}
+.feature-panel-en {
+  font-size: 11px; font-weight: 500; letter-spacing: .22em;
+  color: rgba(255,255,255,.45);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.feature-panel-ja {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 700; color: #fff;
+  line-height: 1.25; letter-spacing: .02em;
+}
+.feature-panel-ja em {
+  font-style: normal;
+  display: block;
+  font-size: .48em;
+  color: rgba(255,255,255,.6);
+  font-weight: 400;
+  margin-top: 10px;
+  letter-spacing: .06em;
+}
+/* テキスト側 */
+.feature-item.reverse .feature-panel { order: 2; }
+.feature-item.reverse .feature-text  { order: 1; }
+@media (max-width: 680px) {
+  .feature-item.reverse .feature-panel { order: 0; }
+  .feature-item.reverse .feature-text  { order: 0; }
+}
+.feature-text {
+  padding: 56px 48px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: #fff;
+}
+@media (max-width: 680px) { .feature-text { padding: 36px 24px; } }
+.feature-num { font-size: 11px; font-weight: 500; letter-spacing: .2em; color: #5A7247; margin-bottom: 14px; }
+.feature-title {
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 500; color: #3E3A39;
+  line-height: 1.5; margin-bottom: 16px;
+}
+.feature-title span { color: #5A7247; }
+.feature-body { font-size: 15px; color: #666; line-height: 2; font-weight: 300; margin-bottom: 20px; }
+.feature-points { list-style: none; }
+.feature-points li {
+  font-size: 14px; font-weight: 400; color: #555;
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px;
+}
+.feature-points li::before { content: '—'; color: #5A7247; font-weight: 300; flex-shrink: 0; }
+/* ═══════════════════════
+   05. HOW TO USE
+═══════════════════════ */
+/* howto：ダイヤモンド網目（商品イメージ） */
+.howto {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(90,114,71,.06) 0, rgba(90,114,71,.06) 1px, transparent 1px, transparent 14px),
+    repeating-linear-gradient(-45deg, rgba(90,114,71,.06) 0, rgba(90,114,71,.06) 1px, transparent 1px, transparent 14px),
+    linear-gradient(160deg, #e8eddf 0%, #f0f2eb 50%, #e4ead8 100%);
+}
+.steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  border: 1px solid #ddd8d0; border-radius: 8px; overflow: hidden;
+}
+@media (max-width: 680px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 380px) { .steps { grid-template-columns: 1fr; } }
+.step {
+  padding: 36px 24px;
+  background: #fff;
+  border-right: 1px solid #ede8e0;
+  text-align: center;
+}
+.step:last-child { border-right: none; }
+.step-num {
+  font-size: 40px; font-weight: 700; color: #5A7247;
+  line-height: 1; margin-bottom: 16px; letter-spacing: 0;
+}
+.step-title { font-size: 14px; font-weight: 500; color: #3E3A39; margin-bottom: 10px; line-height: 1.5; }
+.step-body { font-size: 13px; color: #888; line-height: 1.85; font-weight: 300; }
+.step-note { font-size: 12px; color: #5A7247; margin-top: 8px; }
+/* 施工写真 */
+.howto-photo {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,.14);
+}
+.howto-photo img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  object-position: center 50%;
+  display: block;
+  transition: transform .8s ease;
+}
+.howto-photo:hover img { transform: scale(1.02); }
+.howto-photo-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 56px 28px 22px;
+  background: linear-gradient(0deg, rgba(0,0,0,.6) 0%, transparent 100%);
+  color: #fff;
+  font-size: 14px; font-weight: 500; letter-spacing: .06em;
+}
+/* 施工方法説明図 */
+.howto-diagram {
+  margin: 32px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.10);
+  background: #fff;
+}
+.howto-diagram img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* 施工のポイント帯 */
+.howto-note {
+  margin-top: 32px;
+  background: #fff;
+  border: 1px solid #ddd8d0;
+  border-radius: 8px;
+  padding: 28px 32px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+@media (max-width: 580px) { .howto-note { grid-template-columns: 1fr; gap: 16px; } }
+.howto-note-item { font-size: 13px; color: #666; line-height: 1.85; }
+.howto-note-item strong { display: block; font-size: 13px; font-weight: 500; color: #3E3A39; margin-bottom: 4px; }
+/* ═══════════════════════
+   06. BEFORE / AFTER（写真なし版：比較テーブル）
+═══════════════════════ */
+/* ── Before/After 写真比較（フルブリード） ── */
+.ba-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: 0 -24px 56px;   /* コンテナを突き破って全幅に */
+  box-shadow: 0 16px 64px rgba(0,0,0,.18);
+}
+@media (max-width: 600px) {
+  .ba-photos { grid-template-columns: 1fr; margin: 0 -24px 48px; }
+}
+.ba-photo-item { position: relative; overflow: hidden; }
+.ba-photo-item img {
+  width: 100%; height: 520px;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+  transition: transform .8s ease;
+}
+/* Before：地面（法面）を中心に */
+.ba-photo-item:first-child img {
+  object-position: center 72%;
+}
+/* After：緑ネットの地面ラインを合わせる */
+.ba-photo-item:last-child img {
+  object-position: center 68%;
+}
+.ba-photo-item:hover img { transform: scale(1.03); }
+
+/* 大きなBEFORE/AFTERラベル */
+.ba-photo-badge {
+  position: absolute;
+  top: 28px; left: 28px;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 15px; font-weight: 700; letter-spacing: .16em;
+  text-indent: .16em;
+}
+.ba-photo-badge.before {
+  background: rgba(180,40,30,.88);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(180,40,30,.4);
+}
+.ba-photo-badge.after {
+  background: rgba(40,110,55,.9);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(40,110,55,.4);
+}
+
+/* 下部グラデーション＋キャプション */
+.ba-photo-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 80px 28px 28px;
+  background: linear-gradient(0deg, rgba(0,0,0,.65) 0%, transparent 100%);
+  color: #fff;
+  font-size: 15px; font-weight: 500; letter-spacing: .04em;
+  line-height: 1.6;
+}
+.ba-photo-caption strong {
+  display: block;
+  font-size: 20px; font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: .02em;
+}
+
+/* beforeafter：横糸のみ・ヨコ方向の繊維 */
+.beforeafter {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(90,114,71,.042) 0, rgba(90,114,71,.042) 1px, transparent 1px, transparent 10px),
+    linear-gradient(135deg, #f5f2ec 0%, #faf9f6 60%, #f0f4ec 100%);
+}
+.ba-compare {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e0dbd4;
+  box-shadow: 0 4px 24px rgba(0,0,0,.07);
+}
+.ba-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.ba-head-before {
+  background: linear-gradient(135deg, #b83227 0%, #C0392B 100%);
+  color: #fff;
+  padding: 20px 28px;
+  font-size: 15px; font-weight: 700; letter-spacing: .08em;
+}
+.ba-head-after {
+  background: linear-gradient(135deg, #3a7d44 0%, #5A7247 100%);
+  color: #fff;
+  padding: 20px 28px;
+  font-size: 15px; font-weight: 700; letter-spacing: .08em;
+  border-left: 1px solid rgba(255,255,255,.2);
+}
+.ba-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #ede8e0;
+}
+.ba-pair-before {
+  background: linear-gradient(135deg, #fff7f6 0%, #fff 100%);
+  padding: 24px 28px;
+  display: flex; align-items: flex-start; gap: 14px;
+  border-right: 2px solid #ede8e0;
+}
+.ba-pair-after {
+  background: linear-gradient(135deg, #f3f9f1 0%, #fff 100%);
+  padding: 24px 28px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.ba-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.ba-icon.x  { background: #C0392B; color: #fff; }
+.ba-icon.ok { background: #5A7247; color: #fff; }
+.ba-text { font-size: 14px; line-height: 1.75; color: #666; font-weight: 300; }
+.ba-text strong { display: block; font-weight: 600; color: #3E3A39; margin-bottom: 4px; font-size: 14px; }
+@media (max-width: 600px) {
+  .ba-header,
+  .ba-pair { grid-template-columns: 1fr; }
+  .ba-pair-before { border-right: none; border-bottom: 2px solid #ede8e0; }
+  .ba-head-after { border-left: none; border-top: 1px solid rgba(255,255,255,.2); }
+}
+/* ═══════════════════════
+   07. SPECS
+═══════════════════════ */
+/* specs：逆斜め-45°のツイル（綾織り） */
+.specs {
+  background-image:
+    repeating-linear-gradient(-45deg, rgba(90,114,71,.042) 0, rgba(90,114,71,.042) 1px, transparent 1px, transparent 11px),
+    linear-gradient(180deg, #f5f9f2 0%, #fff 50%, #f5f9f2 100%);
+}
+.specs-intro {
+  max-width: 560px; margin: 0 auto 56px;
+  text-align: center; font-size: 15px; color: #777; line-height: 2; font-weight: 300;
+}
+.specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 600px) { .specs-grid { grid-template-columns: 1fr; } }
+
+/* カード全体 */
+.spec-card {
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,.13);
+  background: #fff;
+  display: flex; flex-direction: column;
+  transition: transform .3s, box-shadow .3s;
+}
+.spec-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 56px rgba(0,0,0,.18);
+}
+
+/* 画像エリア */
+.spec-card-img {
+  width: 100%; height: 340px;
+  background: linear-gradient(160deg, #1a3d22 0%, #2c5e36 55%, #3d7048 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+/* 背景の装飾円 */
+.spec-card-img::before {
+  content: '';
+  position: absolute;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  border: 72px solid rgba(255,255,255,.05);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+/* 底部グラデーションオーバーレイ */
+.spec-card-img-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 48px 28px 24px;
+  background: linear-gradient(0deg, rgba(10,30,14,.75) 0%, transparent 100%);
+}
+.spec-card-img-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  opacity: .45;
+}
+.spec-card-img-icon { font-size: 72px; }
+.spec-card-img-label {
+  font-size: 10px; font-weight: 500; letter-spacing: .24em;
+  color: #fff; text-transform: uppercase;
+}
+/* 画像上の商品名 */
+.spec-card-name {
+  font-size: 22px; font-weight: 700; color: #fff;
+  letter-spacing: .04em; line-height: 1.3;
+  position: relative; z-index: 1;
+}
+.spec-card-sub {
+  font-size: 11px; color: rgba(255,255,255,.6); font-weight: 500;
+  letter-spacing: .14em; margin-top: 4px;
+  position: relative; z-index: 1;
+}
+
+/* カード下部スペック */
+.spec-card-body { padding: 24px 26px 28px; flex: 1; }
+.spec-row {
+  display: flex; gap: 14px; padding: 9px 0;
+  border-bottom: 1px solid #F5F2ED; font-size: 13px; align-items: baseline;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-key { color: #bbb; min-width: 60px; font-size: 11px; font-weight: 500; flex-shrink: 0; letter-spacing: .06em; }
+.spec-val { color: #3E3A39; font-weight: 500; font-size: 13px; }
+.size-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+.size-cell {
+  background: linear-gradient(135deg, #f0f7ec 0%, #e8f2e2 100%);
+  border: 1px solid #d4e8cc;
+  border-radius: 6px;
+  padding: 7px 12px; font-size: 12px; color: #4a6e3a; font-weight: 500;
+  text-align: center;
+}
+.stopper-tip {
+  margin-top: 16px; background: linear-gradient(135deg, #fffbf0 0%, #fff8e6 100%);
+  border-left: 3px solid #C9A83A;
+  padding: 14px 16px; border-radius: 0 6px 6px 0;
+}
+.stopper-tip p { font-size: 12px; color: #777; line-height: 2; font-weight: 300; }
+.stopper-tip strong { font-weight: 600; color: #3E3A39; display: block; margin-bottom: 6px; }
+/* ═══════════════════════
+   08. AWARD（CSS バッジ）
+═══════════════════════ */
+/* award：細かい縦横格子（上品なジャカード風） */
+.award {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(90,114,71,.035) 0, rgba(90,114,71,.035) 1px, transparent 1px, transparent 6px),
+    repeating-linear-gradient(90deg, rgba(90,114,71,.035) 0, rgba(90,114,71,.035) 1px, transparent 1px, transparent 6px),
+    linear-gradient(160deg, #e8eddf 0%, #f0f2eb 60%, #ebe5d5 100%);
+  text-align: center;
+}
+.award-badge {
+  display: inline-flex; flex-direction: column; align-items: center;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: linear-gradient(145deg, #c9a83a, #e8c84a);
+  justify-content: center;
+  margin: 0 auto 36px;
+  box-shadow: 0 4px 24px rgba(180,140,30,.25);
+}
+.award-badge-icon { font-size: 40px; margin-bottom: 4px; }
+.award-badge-text { font-size: 11px; font-weight: 500; color: #fff; letter-spacing: .08em; }
+.award-title { font-size: clamp(18px, 2.5vw, 26px); font-weight: 500; color: #3E3A39; margin-bottom: 12px; }
+.award-detail { font-size: 16px; font-weight: 500; color: #7A6030; margin-bottom: 16px; }
+.award-body { font-size: 14px; color: #888; line-height: 2; font-weight: 300; max-width: 500px; margin: 0 auto; }
+/* ═══════════════════════
+   09. CTA
+═══════════════════════ */
+/* cta：ゆるやかな30°斜め細線（流れるような繊維） */
+.cta {
+  background-image:
+    repeating-linear-gradient(30deg, rgba(90,114,71,.04) 0, rgba(90,114,71,.04) 1px, transparent 1px, transparent 14px),
+    linear-gradient(180deg, #f5f9f2 0%, #fff 100%);
+  text-align: center;
+}
+.cta-lead {
+  font-size: 16px; color: #666; line-height: 2; font-weight: 300;
+  margin-bottom: 52px; max-width: 500px; margin-left: auto; margin-right: auto;
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: #E8E6E1; border: 1px solid #E8E6E1;
+  border-radius: 8px; overflow: hidden;
+  max-width: 640px; margin: 0 auto 40px; text-align: left;
+}
+@media (max-width: 480px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-cell { background: #fff; padding: 24px 22px; }
+.contact-label { font-size: 11px; font-weight: 500; letter-spacing: .15em; color: #aaa; margin-bottom: 6px; }
+.contact-value { font-size: 15px; font-weight: 500; color: #3E3A39; line-height: 1.6; word-break: break-all; }
+.contact-value a { color: #3E3A39; text-decoration: none; }
+.contact-value a:hover { color: #5A7247; }
+.contact-value.sm { font-size: 13px; font-weight: 400; }
+.btn {
+  display: inline-block;
+  background: #5A7247; color: #fff;
+  font-size: 15px; font-weight: 500; letter-spacing: .1em;
+  padding: 16px 52px; border-radius: 2px;
+  text-decoration: none; transition: opacity .25s;
+}
+.btn:hover { opacity: .8; }
+.cta-note { margin-top: 16px; font-size: 12px; color: #bbb; letter-spacing: .04em; }
+/* テクスチャは各セクションの背景に直接組み込み */
+
+/* ── アニメーション ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ヒーロー内の順番登場 */
+.hero-tagline { animation: fadeUp .8s ease-out .2s both; }
+.hero-label   { animation: fadeUp .8s ease-out .45s both; }
+.hero-catch   { animation: fadeUp .9s ease-out .65s both; }
+.hero-sub     { animation: fadeUp .8s ease-out .9s both; }
+.hero-tags    { animation: fadeUp .8s ease-out 1.05s both; }
+.hero-award   { animation: fadeUp .8s ease-out 1.2s both; }
+.hero-specs   { animation: fadeUp .8s ease-out 1.35s both; }
+
+/* スクロールアニメーション用の初期状態 */
+.js-anim {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .65s ease-out, transform .65s ease-out;
+}
+.js-anim.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ── 固定CTAボタン ── */
+.floating-cta {
+  position: fixed;
+  right: 24px;
+  bottom: 40px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .4s, transform .4s;
+  pointer-events: none;
+}
+.floating-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.floating-cta-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 148px; height: 148px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3a7d44, #5A7247);
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px; font-weight: 700; letter-spacing: .06em;
+  box-shadow: 0 10px 40px rgba(58,125,68,.6);
+  transition: transform .2s, box-shadow .2s;
+  line-height: 1.5;
+  text-align: center;
+}
+.floating-cta-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 16px 48px rgba(58,125,68,.7);
+}
+.floating-cta-btn span {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 4px;
+}
+.floating-cta-label {
+  font-size: 11px; font-weight: 500;
+  color: #5A7247;
+  letter-spacing: .08em;
+  background: rgba(255,255,255,.92);
+  padding: 4px 10px; border-radius: 10px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+@media (max-width: 480px) {
+  .floating-cta { right: 16px; bottom: 24px; }
+}
+/* ── FOOTER ── */
+footer {
+  background: #fff; border-top: 1px solid #E8E6E1;
+  padding: 40px 24px; text-align: center;
+}
+.footer-logo { font-size: 13px; font-weight: 500; color: #3E3A39; margin-bottom: 8px; letter-spacing: .1em; }
+.footer-info { font-size: 12px; color: #bbb; line-height: 1.9; }
+/* ─── Mobile / Responsive Fixes ─── */
+@media (max-width: 640px) {
+  .section-pad { padding: 64px 0; }
+}
+@media (max-width: 480px) {
+  .nav,
+  .nav.scrolled { padding: 14px 16px; }
+  .hero-catch { font-size: clamp(26px, 7.5vw, 36px); }
+  .hero-award {
+    font-size: 12px;
+    padding: 10px 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-specs { flex-wrap: wrap; }
+  .hero-spec { width: 50%; padding: 20px 16px; }
+  .hero-spec:nth-child(2n) { border-right: none; }
+  .hero-spec:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.15); }
+  .btn {
+    display: block;
+    padding: 16px 20px;
+    text-align: center;
+  }
+}
+@media (max-width: 680px) {
+  .feature-panel { padding: 32px 24px; }
+  .step:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 380px) {
+  .step { border-right: none; border-bottom: 1px solid #ede8e0; }
+  .step:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+<!-- 固定CTAボタン -->
+<div class="floating-cta" id="floatingCta">
+  <a href="#contact" class="floating-cta-btn">
+    <span>🛒</span>注文する
+  </a>
+  <div class="floating-cta-label">お問い合わせ・ご購入</div>
+</div>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">川田ニット株式会社</div>
+  <a href="#contact" class="nav-btn">お問い合わせ</a>
+</nav>
+<!-- ═══ 01. HERO ═══ -->
+<section class="hero">
+  <!-- 動画背景 -->
+  <video class="hero-video-bg" autoplay muted loop playsinline>
+    <source src="防草シート_1.mp4" type="video/mp4">
+  </video>
+  <!-- 暗いオーバーレイ -->
+  <div class="hero-overlay"></div>
+  <!-- テキストコンテンツ -->
+  <div class="hero-content">
+    <p class="hero-tagline">これまでにない、全く新しい防草ネット</p>
+    <div class="hero-label">しばラク楽してねット！</div>
+    <h1 class="hero-catch">
+      休日の草刈りを、<br>家族との時間に変える。
+    </h1>
+    <p class="hero-sub">
+      風景に溶け込む、新しい雑草管理のカタチ。<br>
+      一度施工すれば、長期間にわたり草刈りから解放されます。
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">除草剤不要</span>
+      <span class="hero-tag">土壌に優しい</span>
+      <span class="hero-tag">UV耐候剤配合</span>
+      <span class="hero-tag">1人で施工できる</span>
+    </div>
+    <div class="hero-award">
+      🏆&ensp;ビジネスプランコンテスト「未来産業学特別賞」受賞
+    </div>
+    <div class="hero-specs">
+      <div class="hero-spec">
+        <div class="hero-spec-num">約8年</div>
+        <div class="hero-spec-label">耐久年数</div>
+      </div>
+      <div class="hero-spec">
+        <div class="hero-spec-num">8サイズ</div>
+        <div class="hero-spec-label">幅50cm〜4m</div>
+      </div>
+      <div class="hero-spec">
+        <div class="hero-spec-num">除草剤</div>
+        <div class="hero-spec-label">完全不要</div>
+      </div>
+      <div class="hero-spec">
+        <div class="hero-spec-num">1人</div>
+        <div class="hero-spec-label">で施工完了</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ 02. INTRO ═══ -->
+<section class="intro section-pad">
+  <div class="container">
+    <p class="intro-text">
+      年に数回の草刈りは、想像以上の重労働です。<br>
+      時間がなくて管理できない。放棄農地や遊休地をどうにかしたい。<br><br>
+      <strong>私たちは、その悩みを「自然の力を借りる」ことで解決します。</strong><br>
+      ただ草を無くすのではなく、美しく共存する。<br>
+      それが、これからの土地管理のスタンダードです。
+    </p>
+  </div>
+</section>
+<!-- ═══ 03. PROBLEM ═══ -->
+<section class="problem section-pad">
+  <div class="container">
+    <span class="section-eyebrow">The Problem</span>
+    <h2 class="section-title">こんな悩みはありませんか？</h2>
+    <p class="problem-lead">
+      農道・畦畔・法面の草刈りは、年間を通じて繰り返し必要。<br>
+      体力的な負担と時間コストが、毎年積み重なります。
+    </p>
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="problem-item-num">01</div>
+        <h3 class="problem-item-title">年に数回の草刈りが体力的に大変</h3>
+        <p class="problem-item-body">真夏の炎天下での草刈り作業は、体力・時間ともに大きな負担。農家さんだけでなく、土地を持つすべての方の悩みです。</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-item-num">02</div>
+        <h3 class="problem-item-title">高齢化・人手不足で管理が追いつかない</h3>
+        <p class="problem-item-body">担い手の減少が進む農業現場では、定期的な草刈り作業の継続が困難に。気づけば雑草が生い茂っている状況が続きます。</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-item-num">03</div>
+        <h3 class="problem-item-title">放棄農地・遊休地の管理が重荷に</h3>
+        <p class="problem-item-body">使っていない農地でも草刈りは必要。管理コストが高すぎて手放すしかない、という方が増えています。</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-item-num">04</div>
+        <h3 class="problem-item-title">除草剤は環境・土壌への影響が心配</h3>
+        <p class="problem-item-body">楽になりたいが、除草剤で土壌や水質、周辺の生き物への影響が出ないか不安。自然にやさしい方法が見つからない。</p>
+      </div>
+    </div>
+    <div class="problem-bridge-img">
+      <img src="net.jpg" alt="しばラク楽してねット 商品画像">
+    </div>
+    <div class="problem-bridge">
+      <p class="problem-bridge-text">しばラク楽してねットが解決します</p>
+    </div>
+  </div>
+</section>
+<!-- ═══ 04. FEATURES ═══ -->
+<section class="features section-pad">
+  <div class="container">
+    <span class="section-eyebrow">Why it works</span>
+    <h2 class="section-title">からだと土地にやさしい、5つの理由</h2>
+  </div>
+  <!-- Feature 01 -->
+  <div class="feature-item">
+    <div class="feature-panel fp1" data-num="01">
+      <div class="feature-panel-en">Feature 01</div>
+      <div class="feature-panel-ja">景観を守る。<em>芝みたいにキレイ</em></div>
+    </div>
+    <div class="feature-text">
+      <div class="feature-num">Feature 01</div>
+      <h3 class="feature-title"><span>芝みたいでキレイ。</span><br>景観を守る</h3>
+      <p class="feature-body">
+        雑草を無機質なシートで隠すのではなく、鮮やかなグリーンのネットで覆います。
+        周囲の自然から浮くことなく、まるで美しい芝生のような景観を保ちます。
+      </p>
+      <ul class="feature-points">
+        <li>草刈り後の殺風景な状態が続かない</li>
+        <li>周辺の風景に溶け込む自然なグリーン</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Feature 02 -->
+  <div class="feature-item reverse">
+    <div class="feature-panel fp2" data-num="02">
+      <div class="feature-panel-en">Feature 02</div>
+      <div class="feature-panel-ja">土壌を生かす。<em>除草剤は不要</em></div>
+    </div>
+    <div class="feature-text">
+      <div class="feature-num">Feature 02</div>
+      <h3 class="feature-title"><span>除草剤は不要。</span><br>土壌を生かす</h3>
+      <p class="feature-body">
+        光も水も通すネットだから、雑草はネットの下で根を張ります。
+        これが法面や畦畔を崩れにくくし、土砂の流出を防ぎます。
+        土が痩せる心配もありません。
+      </p>
+      <ul class="feature-points">
+        <li>除草剤ゼロで環境にやさしい</li>
+        <li>雑草の根が土壌をしっかり固定</li>
+        <li>降雨時の土砂流出・崩壊リスクを低減</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Feature 03 -->
+  <div class="feature-item">
+    <div class="feature-panel fp3" data-num="03">
+      <div class="feature-panel-en">Feature 03</div>
+      <div class="feature-panel-ja">1人で施工できる。<em>ロール状だから簡単</em></div>
+    </div>
+    <div class="feature-text">
+      <div class="feature-num">Feature 03</div>
+      <h3 class="feature-title"><span>1人でもラクラク。</span><br>約8年の高耐久</h3>
+      <p class="feature-body">
+        ロール状だから、1人で広げながら施工できます。
+        UV耐候剤を配合しており、一度の施工で約8年間、
+        草刈りからあなたを解放します。
+      </p>
+      <ul class="feature-points">
+        <li>重機・特殊な道具は不要</li>
+        <li>UV耐候剤配合で約8年の高耐久</li>
+        <li>カメムシ等の害虫対策にも効果的</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Feature 04 -->
+  <div class="feature-item reverse">
+    <div class="feature-panel fp4" data-num="04">
+      <div class="feature-panel-en">Feature 04</div>
+      <div class="feature-panel-ja">軽くて強い。<em>伸縮性があり風にも強い</em></div>
+    </div>
+    <div class="feature-text">
+      <div class="feature-num">Feature 04</div>
+      <h3 class="feature-title"><span>軽量で伸縮性があり、</span><br>風にも強い</h3>
+      <p class="feature-body">
+        ネット素材なので軽くて運搬・展開が楽々。
+        適度な伸縮性があり、地形の変化にも追従します。
+        破れにくく、強風にも耐える耐候設計です。
+      </p>
+      <ul class="feature-points">
+        <li>軽量で1人での運搬・設置が容易</li>
+        <li>伸縮性があり複雑な地形にも対応</li>
+        <li>通気・透水性を確保し土壌環境を維持</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Feature 05 -->
+  <div class="feature-item">
+    <div class="feature-panel fp5" data-num="05">
+      <div class="feature-panel-en">Feature 05</div>
+      <div class="feature-panel-ja">8サイズ展開。<em>幅50cmから4mまで</em></div>
+    </div>
+    <div class="feature-text">
+      <div class="feature-num">Feature 05</div>
+      <h3 class="feature-title"><span>0.5mから4mまで、</span><br>幅広いサイズ展開</h3>
+      <p class="feature-body">
+        細い農道の端から広大な法面まで、さまざまな場所に対応できるよう
+        8サイズを用意しています。
+        現場の状況に合わせて最適なサイズをお選びいただけます。
+      </p>
+      <ul class="feature-points">
+        <li>幅50cm〜4mの8サイズ展開</li>
+        <li>農道・畦畔・法面・遊休地など幅広く対応</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ═══ 05. HOW TO USE ═══ -->
+<section class="howto section-pad">
+  <div class="container">
+    <span class="section-eyebrow">How to Use</span>
+    <h2 class="section-title">たった4ステップで施工完了</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">事前の草刈り・除去</h3>
+        <p class="step-body">施工前に既存の雑草を草刈り・除去。根が残っていても問題ありません。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">ネットを広げる</h3>
+        <p class="step-body">ロールを施工面に広げます。ピンと張らず、少したるませながら敷くのがポイント。</p>
+        <p class="step-note">※伸縮性を考慮して余裕を持たせる</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">ストッパーで固定</h3>
+        <p class="step-body">プラスチックストッパーを木槌で打ち込んで固定。重ね部分は最低20cm確保。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3 class="step-title">完成。あとは放置</h3>
+        <p class="step-body">施工完了。以降は草刈り不要。約8年間、管理の手間から解放されます。</p>
+      </div>
+    </div>
+    <!-- 施工写真 -->
+    <div class="howto-photo">
+      <img src="construction.jpg" alt="施工中の様子">
+      <div class="howto-photo-caption">実際の施工風景 ― ロールを広げてストッパーで固定するだけ</div>
+    </div>
+
+    <!-- 施工方法説明図 -->
+    <div class="howto-diagram">
+      <img src="howto-diagram.jpg" alt="施工方法の説明図">
+    </div>
+
+    <div class="howto-note">
+      <div class="howto-note-item">
+        <strong>ストッパー使用本数の目安</strong>
+        幅1m以下：50mに対し150本<br>
+        幅1.5〜2m：50mに対し200本<br>
+        幅3〜4m：25mに対し150本
+      </div>
+      <div class="howto-note-item">
+        <strong>重ね合わせについて</strong>
+        ネットの重なり部分には最低20cmを確保してください。端の固定はストッパーを入れず重ねるだけでOKです。
+      </div>
+      <div class="howto-note-item">
+        <strong>推奨工具</strong>
+        木槌またはプラスチックハンマーを使用してストッパーを打ち込んでください。金属ハンマーは変形の原因になります。
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ 06. BEFORE / AFTER ═══ -->
+<section class="beforeafter section-pad">
+  <div class="container">
+    <span class="section-eyebrow">Before / After</span>
+    <h2 class="section-title">施工前後の変化</h2>
+    <!-- 写真比較 -->
+    <div class="ba-photos">
+      <div class="ba-photo-item">
+        <img src="before.jpg" alt="施工前：雑草が枯れた法面">
+        <div class="ba-photo-badge before">✕ &ensp;BEFORE</div>
+        <div class="ba-photo-caption">
+          <strong>草刈り後の枯れた法面</strong>
+          すぐ雑草が再生し、繰り返し作業が必要
+        </div>
+      </div>
+      <div class="ba-photo-item">
+        <img src="after.jpg" alt="施工後：しばラク楽してねット施工済みの法面">
+        <div class="ba-photo-badge after">✓ &ensp;AFTER</div>
+        <div class="ba-photo-caption">
+          <strong>施工後の鮮やかなグリーン</strong>
+          草刈りゼロ・景観もキレイに保たれる
+        </div>
+      </div>
+    </div>
+
+    <div class="ba-compare">
+      <!-- ヘッダー -->
+      <div class="ba-header">
+        <div class="ba-head-before">✕ &ensp;Before（施工前）</div>
+        <div class="ba-head-after">✓ &ensp;After（施工後）</div>
+      </div>
+      <!-- 行1 -->
+      <div class="ba-pair">
+        <div class="ba-pair-before">
+          <div class="ba-icon x">✕</div>
+          <div class="ba-text"><strong>年に数回の草刈り作業</strong>真夏の炎天下で繰り返す重労働。体力・費用ともに大きな負担。</div>
+        </div>
+        <div class="ba-pair-after">
+          <div class="ba-icon ok">✓</div>
+          <div class="ba-text"><strong>草刈りがほぼ不要に</strong>一度施工すれば約8年間、管理の手間から解放される。</div>
+        </div>
+      </div>
+      <!-- 行2 -->
+      <div class="ba-pair">
+        <div class="ba-pair-before">
+          <div class="ba-icon x">✕</div>
+          <div class="ba-text"><strong>放置すると雑草が生い茂る</strong>少し目を離すと法面が荒れ、景観も崩れる。</div>
+        </div>
+        <div class="ba-pair-after">
+          <div class="ba-icon ok">✓</div>
+          <div class="ba-text"><strong>芝みたいにキレイな景観</strong>鮮やかなグリーンが風景に溶け込み、美観を維持。</div>
+        </div>
+      </div>
+      <!-- 行3 -->
+      <div class="ba-pair">
+        <div class="ba-pair-before">
+          <div class="ba-icon x">✕</div>
+          <div class="ba-text"><strong>土砂流出・崩壊のリスク</strong>雑草が根付かず、降雨時に畦畔や法面が崩れやすい。</div>
+        </div>
+        <div class="ba-pair-after">
+          <div class="ba-icon ok">✓</div>
+          <div class="ba-text"><strong>法面・畦畔の崩壊を防止</strong>雑草がネット下で根を張り続け、土壌をしっかり固定。</div>
+        </div>
+      </div>
+      <!-- 行4 -->
+      <div class="ba-pair">
+        <div class="ba-pair-before">
+          <div class="ba-icon x">✕</div>
+          <div class="ba-text"><strong>除草剤への依存と不安</strong>環境・土壌・水質への影響が気になる。</div>
+        </div>
+        <div class="ba-pair-after">
+          <div class="ba-icon ok">✓</div>
+          <div class="ba-text"><strong>除草剤ゼロで環境にやさしい</strong>自然の力を活かし、土壌・水質・生態系を守る。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ 07. SPECS ═══ -->
+<section class="specs section-pad">
+  <div class="container">
+    <span class="section-eyebrow">Product Lineup</span>
+    <h2 class="section-title">商品ラインナップ</h2>
+    <p class="specs-intro">
+      0.5m巾の細いスペース用から、4m巾の広大な土地用まで。<br>
+      用途に合わせた規格をご用意しています。
+    </p>
+    <div class="specs-grid">
+      <!-- ネット -->
+      <div class="spec-card">
+        <div class="spec-card-img">
+          <img src="net.jpg" alt="しばラク楽してねット" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;">
+          <div class="spec-card-img-overlay">
+            <div class="spec-card-name">しばラク楽してねット</div>
+            <div class="spec-card-sub">雑草抑制ネット</div>
+          </div>
+        </div>
+        <div class="spec-card-body">
+          <div class="spec-row"><span class="spec-key">材質</span><span class="spec-val">ポリエチレン（UV耐候剤配合）</span></div>
+          <div class="spec-row"><span class="spec-key">耐久性</span><span class="spec-val">約8年</span></div>
+          <div class="spec-row"><span class="spec-key">用途</span><span class="spec-val">農道・畦畔・法面の雑草対策、滑止め、害虫対策</span></div>
+          <div class="spec-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+            <span class="spec-key">サイズ展開</span>
+            <div class="size-list">
+              <div class="size-cell">幅50cm × 50m</div>
+              <div class="size-cell">幅1m × 50m</div>
+              <div class="size-cell">幅1.5m × 50m</div>
+              <div class="size-cell">幅2m × 50m</div>
+              <div class="size-cell">幅2.5m × 50m</div>
+              <div class="size-cell">幅3m × 25m</div>
+              <div class="size-cell">幅3.5m × 25m</div>
+              <div class="size-cell">幅4m × 25m</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ストッパー -->
+      <div class="spec-card">
+        <div class="spec-card-img">
+          <img src="stopper.jpg" alt="ストッパー（固定ピン）" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#f5f9f2;transition:transform .6s ease;">
+          <div class="spec-card-img-overlay">
+            <div class="spec-card-name">ストッパー</div>
+            <div class="spec-card-sub">固定ピン</div>
+          </div>
+        </div>
+        <div class="spec-card-body">
+          <div class="spec-row"><span class="spec-key">材質</span><span class="spec-val">ポリプロピレン</span></div>
+          <div class="spec-row"><span class="spec-key">寸法</span><span class="spec-val">200mm</span></div>
+          <div class="spec-row"><span class="spec-key">径</span><span class="spec-val">45mm</span></div>
+          <div class="spec-row"><span class="spec-key">特徴</span><span class="spec-val">耐衝撃・耐候性。反射・粉化しない</span></div>
+          <div class="stopper-tip">
+            <strong>使用本数の目安</strong>
+            <p>幅1m以下 → 50m に対しストッパー150本<br>
+            幅1.5〜2m → 50m に対しストッパー200本<br>
+            幅3〜4m → 25m に対しストッパー150本</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══ 08. AWARD ═══ -->
+<section class="award section-pad">
+  <div class="container">
+    <span class="section-eyebrow">Recognition</span>
+    <h2 class="section-title">確かな評価をいただいています</h2>
+    <div class="award-badge">
+      <div class="award-badge-icon">🏆</div>
+      <div class="award-badge-text">受賞</div>
+    </div>
+    <h3 class="award-title">農業・土木現場の課題解決が<br>高く評価されました</h3>
+    <p class="award-detail">ビジネスプランコンテスト「未来産業学特別賞」受賞</p>
+    <p class="award-body">
+      雑草管理という農業現場の根深い課題を、革新的かつ持続可能な製品で解決するモデルとして、審査委員会より特別賞が授与されました。
+    </p>
+  </div>
+</section>
+<!-- ═══ 09. CTA ═══ -->
+<section class="cta section-pad" id="contact">
+  <div class="container">
+    <span class="section-eyebrow">Contact</span>
+    <h2 class="section-title">あなたの土地に合うサイズを<br>一緒に見つけましょう</h2>
+    <p class="cta-lead">
+      サンプルのご依頼・お見積もり・ご質問、<br>
+      担当者が丁寧にご対応いたします。
+    </p>
+    <div class="contact-grid">
+      <div class="contact-cell">
+        <div class="contact-label">担当 携帯</div>
+        <div class="contact-value"><a href="tel:0805858893">080-5858-5893</a></div>
+      </div>
+      <div class="contact-cell">
+        <div class="contact-label">TEL / FAX</div>
+        <div class="contact-value">0763-62-1170<br>0763-62-0448</div>
+      </div>
+      <div class="contact-cell">
+        <div class="contact-label">メールアドレス</div>
+        <div class="contact-value sm"><a href="mailto:kwd-kaihatsuservice@celery.ocn.ne.jp">kwd-kaihatsuservice<br>@celery.ocn.ne.jp</a></div>
+      </div>
+      <div class="contact-cell">
+        <div class="contact-label">所在地</div>
+        <div class="contact-value sm">〒939-1867<br>富山県南砺市梅野新1370</div>
+      </div>
+    </div>
+    <a href="mailto:kwd-kaihatsuservice@celery.ocn.ne.jp" class="btn">お問い合わせ・ご購入はこちら</a>
+    <p class="cta-note">営業時間内にご返答いたします</p>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p class="footer-logo">川田ニット株式会社</p>
+    <p class="footer-info">
+      〒939-1867 富山県南砺市梅野新1370　TEL: 0763-62-1170 ／ FAX: 0763-62-0448<br>
+      © 2024 Kawada Knit Co., Ltd. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+<script>
+// ナビ・フローティングCTA
+const nav = document.getElementById('nav');
+const floatingCta = document.getElementById('floatingCta');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  floatingCta.classList.toggle('visible', window.scrollY > 300);
+});
+
+// スクロールアニメーション
+const animSelectors = [
+  '.section-eyebrow',
+  '.section-title',
+  '.intro-text',
+  '.problem-lead',
+  '.problem-item',
+  '.problem-bridge',
+  '.feature-text',
+  '.step',
+  '.howto-note',
+  '.ba-pair',
+  '.spec-card',
+  '.specs-intro',
+  '.award-badge',
+  '.award-title',
+  '.award-detail',
+  '.award-body',
+  '.cta-lead',
+  '.contact-grid',
+].join(',');
+
+document.querySelectorAll(animSelectors).forEach(el => {
+  el.classList.add('js-anim');
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    // 兄弟要素内での順番でディレイをずらす
+    const siblings = Array.from(entry.target.parentElement?.querySelectorAll('.js-anim') || []);
+    const idx = siblings.indexOf(entry.target);
+    entry.target.style.transitionDelay = `${idx * 70}ms`;
+    entry.target.classList.add('is-visible');
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.js-anim').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
