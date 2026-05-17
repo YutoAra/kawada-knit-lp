@@ -55,8 +55,21 @@ h1, h2, h3 { font-weight: 500; }
   box-shadow: 0 1px 0 rgba(0,0,0,.07);
   padding: 14px 32px;
 }
-.nav-logo { font-size: 13px; font-weight: 500; letter-spacing: .12em; color: #fff; transition: color .3s; }
-.nav.scrolled .nav-logo { color: #3E3A39; }
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 500; letter-spacing: .12em;
+  color: #0068B4;
+  text-decoration: none;
+  background: rgba(255,255,255,.92);
+  padding: 8px 16px 8px 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0,0,0,.1);
+}
+.nav-logo img {
+  height: 36px; width: auto;
+  mix-blend-mode: multiply;
+}
 .nav-btn {
   font-size: 12px; font-weight: 500; letter-spacing: .1em;
   color: #3E3A39; background: #fff;
@@ -241,46 +254,121 @@ h1, h2, h3 { font-weight: 500; }
     linear-gradient(160deg, #f5f8f2 0%, #faf9f6 50%, #f0ede6 100%);
 }
 .problem-lead {
-  max-width: 600px; margin: 0 auto 56px;
+  max-width: 600px; margin: 0 auto 48px;
   text-align: center;
   font-size: 15px; color: #777; line-height: 2;
 }
+
+/* グループラベル */
+.problem-group-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  padding: 6px 18px; border-radius: 100px;
+  margin-bottom: 20px;
+}
+.problem-group-label.no-sheet  { background: #fef0ee; color: #C0392B; border: 1px solid #f5c0b8; }
+.problem-group-label.has-sheet { background: #eef4ea; color: #4a6630; border: 1px solid #b8d4a8; }
+
+/* 吹き出しリスト */
 .problem-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-  background: #ddd8d0;
-  border: 2px solid #ddd8d0;
-  border-radius: 12px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 48px;
 }
-@media (max-width: 580px) { .problem-grid { grid-template-columns: 1fr; } }
+
+/* 吹き出しカード：横並び */
 .problem-item {
-  background: linear-gradient(145deg, #ffffff 0%, #f7fbf4 100%);
-  padding: 44px 32px 36px;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  background: transparent;
 }
-.problem-item::after {
+.problem-item:nth-child(even) { flex-direction: row-reverse; }
+@media (max-width: 640px) {
+  .problem-item,
+  .problem-item:nth-child(even) { flex-direction: column; gap: 0; }
+}
+
+.problem-item-illust-wrap {
+  position: relative;
+  width: 220px; height: 220px;
+  flex-shrink: 0;
+}
+@media (max-width: 640px) { .problem-item-illust-wrap { width: 150px; height: 150px; } }
+.problem-item-illust {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  background: #f0f4ec;
+  box-shadow: 0 4px 20px rgba(0,0,0,.10);
+  position: absolute; top: 0; left: 0;
+}
+.problem-item-illust.solved { display: none; }
+
+.problem-item-bubble {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 36px;
+  box-shadow: 0 6px 32px rgba(0,0,0,.10);
+  position: relative;
+  border: 1.5px solid #ede8e0;
+}
+/* 奇数：三角は左向き */
+.problem-item:nth-child(odd) .problem-item-bubble::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #C0392B 0%, rgba(192,57,43,0) 100%);
+  top: 50%; left: -15px; transform: translateY(-50%);
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-right: 15px solid #ede8e0;
 }
-.problem-item-num {
-  font-size: clamp(80px, 12vw, 110px);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: rgba(90, 114, 71, 0.10);
+.problem-item:nth-child(odd) .problem-item-bubble::after {
+  content: '';
   position: absolute;
-  top: 10px; right: 14px;
-  pointer-events: none;
-  font-variant-numeric: tabular-nums;
+  top: 50%; left: -12px; transform: translateY(-50%);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 13px solid #fff;
 }
-.problem-item-title { font-size: 17px; font-weight: 500; color: #3E3A39; margin-bottom: 12px; line-height: 1.55; }
-.problem-item-body { font-size: 14px; color: #888; line-height: 1.9; font-weight: 300; }
+/* 偶数：三角は右向き */
+.problem-item:nth-child(even) .problem-item-bubble::before {
+  content: '';
+  position: absolute;
+  top: 50%; right: -15px; transform: translateY(-50%);
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 15px solid #ede8e0;
+}
+.problem-item:nth-child(even) .problem-item-bubble::after {
+  content: '';
+  position: absolute;
+  top: 50%; right: -12px; transform: translateY(-50%);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 13px solid #fff;
+}
+@media (max-width: 640px) {
+  .problem-item-bubble::before,
+  .problem-item-bubble::after { display: none; }
+}
+
+.problem-item-title {
+  font-size: 19px; font-weight: 700; color: #3E3A39;
+  margin-bottom: 12px; line-height: 1.5;
+}
+.problem-item-body {
+  font-size: 15px; color: #777; line-height: 2; font-weight: 300;
+}
+/* 吹き出し */
+.problem-item-bubble {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
 .problem-bridge {
   margin: 64px -24px 0;
   background: linear-gradient(135deg, #2a5c36 0%, #3d7a48 60%, #5A7247 100%);
@@ -643,26 +731,25 @@ h1, h2, h3 { font-weight: 500; }
 
 /* カード全体 */
 .spec-card {
-  border-radius: 16px; overflow: hidden;
-  box-shadow: 0 12px 48px rgba(0,0,0,.13);
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,.11);
   background: #fff;
   display: flex; flex-direction: column;
   transition: transform .3s, box-shadow .3s;
+  border: 1px solid #e8e4de;
 }
 .spec-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 56px rgba(0,0,0,.18);
+  box-shadow: 0 20px 56px rgba(0,0,0,.16);
 }
 
 /* 画像エリア */
 .spec-card-img {
-  width: 100%; height: 340px;
+  width: 100%; height: 280px;
   background: linear-gradient(160deg, #1a3d22 0%, #2c5e36 55%, #3d7048 100%);
   display: flex; align-items: center; justify-content: center;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
-/* 背景の装飾円 */
 .spec-card-img::before {
   content: '';
   position: absolute;
@@ -672,49 +759,56 @@ h1, h2, h3 { font-weight: 500; }
   top: -100px; right: -100px;
   pointer-events: none;
 }
-/* 底部グラデーションオーバーレイ */
 .spec-card-img-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 48px 28px 24px;
-  background: linear-gradient(0deg, rgba(10,30,14,.75) 0%, transparent 100%);
+  padding: 48px 24px 20px;
+  background: linear-gradient(0deg, rgba(10,30,14,.8) 0%, transparent 100%);
 }
 .spec-card-img-placeholder {
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  opacity: .45;
+  display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: .45;
 }
 .spec-card-img-icon { font-size: 72px; }
-.spec-card-img-label {
-  font-size: 10px; font-weight: 500; letter-spacing: .24em;
-  color: #fff; text-transform: uppercase;
-}
-/* 画像上の商品名 */
+.spec-card-img-label { font-size: 10px; font-weight: 500; letter-spacing: .24em; color: #fff; text-transform: uppercase; }
 .spec-card-name {
-  font-size: 22px; font-weight: 700; color: #fff;
-  letter-spacing: .04em; line-height: 1.3;
-  position: relative; z-index: 1;
+  font-size: 20px; font-weight: 700; color: #fff;
+  letter-spacing: .04em; line-height: 1.3; position: relative; z-index: 1;
 }
 .spec-card-sub {
   font-size: 11px; color: rgba(255,255,255,.6); font-weight: 500;
-  letter-spacing: .14em; margin-top: 4px;
-  position: relative; z-index: 1;
+  letter-spacing: .14em; margin-top: 4px; position: relative; z-index: 1;
 }
 
-/* カード下部スペック */
-.spec-card-body { padding: 24px 26px 28px; flex: 1; }
+/* 価格エリア */
+.spec-card-price {
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #f5f9f2 0%, #eef5e8 100%);
+  border-bottom: 1px solid #e2ead8;
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 8px;
+}
+.spec-price-label {
+  font-size: 11px; font-weight: 500; color: #888; letter-spacing: .1em;
+}
+.spec-price-value {
+  font-size: 26px; font-weight: 700; color: #3a6e30; letter-spacing: .02em; line-height: 1;
+}
+.spec-price-unit { font-size: 13px; font-weight: 400; color: #888; margin-left: 2px; }
+.spec-price-note { font-size: 11px; color: #aaa; }
+
+/* スペック本体 */
+.spec-card-body { padding: 20px 24px 8px; flex: 1; }
 .spec-row {
-  display: flex; gap: 14px; padding: 9px 0;
+  display: flex; gap: 14px; padding: 8px 0;
   border-bottom: 1px solid #F5F2ED; font-size: 13px; align-items: baseline;
 }
 .spec-row:last-child { border-bottom: none; }
-.spec-key { color: #bbb; min-width: 60px; font-size: 11px; font-weight: 500; flex-shrink: 0; letter-spacing: .06em; }
+.spec-key { color: #bbb; min-width: 56px; font-size: 11px; font-weight: 500; flex-shrink: 0; letter-spacing: .06em; }
 .spec-val { color: #3E3A39; font-weight: 500; font-size: 13px; }
 .size-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
 .size-cell {
   background: linear-gradient(135deg, #f0f7ec 0%, #e8f2e2 100%);
-  border: 1px solid #d4e8cc;
-  border-radius: 6px;
-  padding: 7px 12px; font-size: 12px; color: #4a6e3a; font-weight: 500;
-  text-align: center;
+  border: 1px solid #d4e8cc; border-radius: 6px;
+  padding: 7px 12px; font-size: 12px; color: #4a6e3a; font-weight: 500; text-align: center;
 }
 .stopper-tip {
   margin-top: 16px; background: linear-gradient(135deg, #fffbf0 0%, #fff8e6 100%);
@@ -723,6 +817,20 @@ h1, h2, h3 { font-weight: 500; }
 }
 .stopper-tip p { font-size: 12px; color: #777; line-height: 2; font-weight: 300; }
 .stopper-tip strong { font-weight: 600; color: #3E3A39; display: block; margin-bottom: 6px; }
+
+/* カード下部CTAボタン */
+.spec-card-footer {
+  padding: 16px 24px 24px;
+}
+.spec-card-cta {
+  display: block; width: 100%; text-align: center;
+  background: #3a6e30; color: #fff;
+  font-size: 14px; font-weight: 700; letter-spacing: .1em;
+  padding: 14px; border-radius: 8px;
+  text-decoration: none;
+  transition: opacity .2s;
+}
+.spec-card-cta:hover { opacity: .85; }
 /* ═══════════════════════
    08. AWARD（CSS バッジ）
 ═══════════════════════ */
@@ -735,54 +843,278 @@ h1, h2, h3 { font-weight: 500; }
   text-align: center;
 }
 .award-badge {
-  display: inline-flex; flex-direction: column; align-items: center;
-  width: 160px; height: 160px; border-radius: 50%;
-  background: linear-gradient(145deg, #c9a83a, #e8c84a);
-  justify-content: center;
+  display: block;
   margin: 0 auto 36px;
-  box-shadow: 0 4px 24px rgba(180,140,30,.25);
+  width: 420px; height: auto;
+  filter: drop-shadow(0 8px 28px rgba(180,140,30,.4));
 }
-.award-badge-icon { font-size: 40px; margin-bottom: 4px; }
-.award-badge-text { font-size: 11px; font-weight: 500; color: #fff; letter-spacing: .08em; }
+.award-badge-icon { display: none; }
+.award-badge-text { display: none; }
 .award-title { font-size: clamp(18px, 2.5vw, 26px); font-weight: 500; color: #3E3A39; margin-bottom: 12px; }
 .award-detail { font-size: 16px; font-weight: 500; color: #7A6030; margin-bottom: 16px; }
 .award-body { font-size: 14px; color: #888; line-height: 2; font-weight: 300; max-width: 500px; margin: 0 auto; }
 /* ═══════════════════════
    09. CTA
 ═══════════════════════ */
-/* cta：ゆるやかな30°斜め細線（流れるような繊維） */
+/* cta：フルブリード写真背景 */
 .cta {
-  background-image:
-    repeating-linear-gradient(30deg, rgba(90,114,71,.04) 0, rgba(90,114,71,.04) 1px, transparent 1px, transparent 14px),
-    linear-gradient(180deg, #f5f9f2 0%, #fff 100%);
+  background:
+    linear-gradient(160deg, rgba(20,55,28,.82) 0%, rgba(42,90,50,.78) 60%, rgba(30,70,38,.85) 100%),
+    url('after.jpg') center / cover no-repeat fixed;
   text-align: center;
 }
+.cta .container {
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 64px 48px;
+  box-shadow: 0 8px 48px rgba(0,0,0,.18);
+}
+.cta .section-eyebrow { color: #5A7247; }
+.cta .section-title { color: #3E3A39; }
+.cta .section-title::after { background: #5A7247; }
 .cta-lead {
-  font-size: 16px; color: #666; line-height: 2; font-weight: 300;
+  font-size: 17px; color: #666; line-height: 2; font-weight: 300;
   margin-bottom: 52px; max-width: 500px; margin-left: auto; margin-right: auto;
 }
 .contact-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
   background: #E8E6E1; border: 1px solid #E8E6E1;
-  border-radius: 8px; overflow: hidden;
-  max-width: 640px; margin: 0 auto 40px; text-align: left;
+  border-radius: 12px; overflow: hidden;
+  max-width: 640px; margin: 0 auto 44px; text-align: left;
 }
 @media (max-width: 480px) { .contact-grid { grid-template-columns: 1fr; } }
 .contact-cell { background: #fff; padding: 24px 22px; }
 .contact-label { font-size: 11px; font-weight: 500; letter-spacing: .15em; color: #aaa; margin-bottom: 6px; }
-.contact-value { font-size: 15px; font-weight: 500; color: #3E3A39; line-height: 1.6; word-break: break-all; }
+.contact-value { font-size: 15px; font-weight: 600; color: #3E3A39; line-height: 1.6; word-break: break-all; }
 .contact-value a { color: #3E3A39; text-decoration: none; }
 .contact-value a:hover { color: #5A7247; }
 .contact-value.sm { font-size: 13px; font-weight: 400; }
 .btn {
   display: inline-block;
   background: #5A7247; color: #fff;
-  font-size: 15px; font-weight: 500; letter-spacing: .1em;
-  padding: 16px 52px; border-radius: 2px;
+  font-size: 16px; font-weight: 700; letter-spacing: .1em;
+  padding: 20px 60px; border-radius: 4px;
   text-decoration: none; transition: opacity .25s;
+  box-shadow: 0 4px 24px rgba(58,114,71,.35);
 }
-.btn:hover { opacity: .8; }
-.cta-note { margin-top: 16px; font-size: 12px; color: #bbb; letter-spacing: .04em; }
+.btn:hover { opacity: .85; }
+.cta-note { margin-top: 12px; margin-bottom: 40px; font-size: 13px; color: #888; letter-spacing: .04em; }
+
+/* 電話・FAX 横並びコンテナ */
+.contact-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+/* 電話ボタン（メイン） */
+.btn-phone {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px;
+  background: #3a6e30; color: #fff;
+  padding: 18px 36px; border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 8px 36px rgba(40,100,50,.45);
+  transition: transform .2s, box-shadow .2s;
+  border: 2px solid rgba(255,255,255,.2);
+  flex: 1; max-width: 340px;
+}
+.btn-phone:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(40,100,50,.55); }
+.btn-phone-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,.2);
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+.btn-phone-icon svg { width: 28px; height: 28px; fill: #fff; }
+.btn-phone-text { display: flex; flex-direction: column; align-items: center; }
+.btn-phone-label { font-size: 12px; font-weight: 400; opacity: .85; letter-spacing: .1em; margin-bottom: 4px; }
+.btn-phone-num { font-size: 28px; font-weight: 700; letter-spacing: .08em; line-height: 1; white-space: nowrap; }
+
+/* FAX誘導 */
+.btn-fax-wrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px;
+  border: 1.5px solid #c8d8c0;
+  border-radius: 10px;
+  padding: 18px 36px;
+  background: #f4f9f1;
+  flex: 1; max-width: 340px;
+}
+.btn-fax-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px;
+  background: #eef4e9;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+.btn-fax-label {
+  font-size: 12px; font-weight: 500; color: #888;
+  letter-spacing: .1em;
+}
+.btn-fax-num {
+  font-size: 28px; font-weight: 700; color: #3a6e30;
+  letter-spacing: .08em; line-height: 1.2;
+}
+.btn-fax-dl {
+  font-size: 12px; color: #5A7247; font-weight: 500;
+  text-decoration: none; border-bottom: 1px solid #5A7247;
+  margin-top: 6px; letter-spacing: .04em;
+  transition: opacity .2s;
+}
+.btn-fax-dl:hover { opacity: .7; }
+
+/* ダウンロードボタン */
+.cta-downloads {
+  display: flex; gap: 16px; justify-content: center;
+  margin-top: 4px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.btn-dl {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #fff; color: #5A7247;
+  border: 2px solid #5A7247;
+  font-size: 14px; font-weight: 600; letter-spacing: .06em;
+  padding: 14px 28px; border-radius: 6px;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.btn-dl:hover { background: #5A7247; color: #fff; }
+.btn-dl:hover .btn-dl-icon { background: rgba(255,255,255,.25); }
+.btn-dl-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  background: #eef4e9;
+  border-radius: 50%;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+/* ── CM動画 ── */
+.cm-section {
+  background: linear-gradient(160deg, #1a3d22 0%, #2c5e36 60%, #1a3d22 100%);
+  text-align: center;
+  padding: 80px 24px;
+}
+.cm-section .section-eyebrow { color: rgba(255,255,255,.6); }
+.cm-section .section-title {
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+.cm-section .section-title::after { background: rgba(255,255,255,.4); }
+.cm-video-wrap {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 64px rgba(0,0,0,.4);
+  aspect-ratio: 16 / 9;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cm-video-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.cm-video-wrap:hover img { transform: scale(1.03); }
+.cm-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px;
+  background: rgba(0,0,0,.3);
+  transition: background .3s;
+}
+.cm-video-wrap:hover .cm-play-btn { background: rgba(0,0,0,.15); }
+.cm-play-circle {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.92);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,.3);
+  transition: transform .3s;
+}
+.cm-video-wrap:hover .cm-play-circle { transform: scale(1.1); }
+.cm-play-circle svg { width: 32px; height: 32px; fill: #c00; margin-left: 4px; }
+.cm-play-label {
+  font-size: 14px; font-weight: 600; color: #fff;
+  letter-spacing: .1em;
+  text-shadow: 0 1px 4px rgba(0,0,0,.5);
+}
+/* ── 使用者の声 ── */
+.voices {
+  background-image:
+    repeating-linear-gradient(60deg, rgba(90,114,71,.04) 0, rgba(90,114,71,.04) 1px, transparent 1px, transparent 13px),
+    linear-gradient(160deg, #f0f4ec 0%, #f8fbf5 50%, #eef3e8 100%);
+}
+.voices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 640px) { .voices-grid { grid-template-columns: 1fr; } }
+.voice-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 44px 28px 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  display: flex; flex-direction: column; gap: 20px;
+  position: relative;
+  overflow: visible;
+  margin-top: 22px; /* タグのはみ出し分を確保 */
+}
+.voice-card::before {
+  content: '"';
+  position: absolute; top: 16px; right: 24px;
+  font-size: 80px; font-weight: 900;
+  color: rgba(90,114,71,.08);
+  line-height: 1; font-family: Georgia, serif;
+}
+/* はみ出しタグ */
+.voice-tag {
+  position: absolute;
+  top: -18px; left: 24px;
+  display: inline-block;
+  font-size: 13px; font-weight: 700; letter-spacing: .08em;
+  color: #2a5c36; background: #fff;
+  padding: 7px 20px; border-radius: 100px;
+  border: 2px solid #b8d8a8;
+  box-shadow: 0 3px 12px rgba(0,0,0,.12);
+  white-space: nowrap;
+}
+.voice-person {
+  display: flex; align-items: center; gap: 16px;
+}
+.voice-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%; object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,.1);
+}
+.voice-meta { display: flex; flex-direction: column; gap: 4px; }
+.voice-name {
+  font-size: 14px; font-weight: 700; color: #3E3A39;
+}
+.voice-body {
+  font-size: 15px; color: #555; line-height: 2; font-weight: 300;
+  border-left: 3px solid #5A7247;
+  padding-left: 16px;
+}
+.voice-result {
+  font-size: 13px; font-weight: 600; color: #3a6e30;
+  background: #f2f9ee; border-radius: 8px;
+  padding: 10px 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.voice-result::before { content: '✓'; font-size: 15px; }
 /* テクスチャは各セクションの背景に直接組み込み */
 
 /* ── アニメーション ── */
@@ -832,37 +1164,35 @@ h1, h2, h3 { font-weight: 500; }
 }
 .floating-cta-btn {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 148px; height: 148px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #3a7d44, #5A7247);
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #3a7d44, #5A7247);
   color: #fff;
   text-decoration: none;
-  font-size: 18px; font-weight: 700; letter-spacing: .06em;
-  box-shadow: 0 10px 40px rgba(58,125,68,.6);
+  box-shadow: 0 8px 32px rgba(58,125,68,.55);
   transition: transform .2s, box-shadow .2s;
-  line-height: 1.5;
-  text-align: center;
+  white-space: nowrap;
 }
 .floating-cta-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 0 16px 48px rgba(58,125,68,.7);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(58,125,68,.65);
 }
-.floating-cta-btn span {
-  font-size: 36px;
+.floating-cta-btn > span:first-child {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.floating-cta-sub {
+  font-size: 11px; font-weight: 400;
+  opacity: .85; letter-spacing: .06em;
+  display: block; margin-bottom: 2px;
+}
+.floating-cta-tel {
+  font-size: 20px; font-weight: 700;
+  letter-spacing: .06em; line-height: 1;
   display: block;
-  margin-bottom: 4px;
-}
-.floating-cta-label {
-  font-size: 11px; font-weight: 500;
-  color: #5A7247;
-  letter-spacing: .08em;
-  background: rgba(255,255,255,.92);
-  padding: 4px 10px; border-radius: 10px;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 @media (max-width: 480px) {
   .floating-cta { right: 16px; bottom: 24px; }
@@ -872,55 +1202,121 @@ footer {
   background: #fff; border-top: 1px solid #E8E6E1;
   padding: 40px 24px; text-align: center;
 }
-.footer-logo { font-size: 13px; font-weight: 500; color: #3E3A39; margin-bottom: 8px; letter-spacing: .1em; }
-.footer-info { font-size: 12px; color: #bbb; line-height: 1.9; }
-/* ─── Mobile / Responsive Fixes ─── */
-@media (max-width: 640px) {
-  .section-pad { padding: 64px 0; }
+.footer-logo {
+  font-size: 13px; font-weight: 500; color: #0068B4;
+  margin-bottom: 8px; letter-spacing: .1em;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
 }
-@media (max-width: 480px) {
-  .nav,
-  .nav.scrolled { padding: 14px 16px; }
-  .hero-catch { font-size: clamp(26px, 7.5vw, 36px); }
-  .hero-award {
-    font-size: 12px;
-    padding: 10px 14px;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-  }
-  .hero-specs { flex-wrap: wrap; }
-  .hero-spec { width: 50%; padding: 20px 16px; }
+.footer-logo img { height: 28px; width: auto; mix-blend-mode: multiply; }
+.footer-info { font-size: 12px; color: #bbb; line-height: 1.9; }
+/* ═══════════════════════
+   モバイル対応（〜768px）
+   PCの見た目は変わりません
+═══════════════════════ */
+@media (max-width: 768px) {
+  .section-pad { padding: 64px 0; }
+
+  /* ナビ */
+  .nav, .nav.scrolled { padding: 12px 16px; }
+  .nav-logo { font-size: 11px; padding: 6px 12px 6px 8px; gap: 6px; }
+  .nav-logo img { height: 24px; }
+  .nav-btn { font-size: 11px; padding: 7px 12px; }
+
+  /* ヒーロー */
+  .hero { padding: 100px 20px 60px; }
+  .hero-label { font-size: clamp(16px, 4.5vw, 26px); padding: 12px 28px; }
+  .hero-catch { font-size: clamp(28px, 7vw, 48px); }
+  .hero-sub { font-size: 14px; }
+  .hero-tag { font-size: 11px; padding: 5px 12px; }
+  .hero-award { font-size: 12px; padding: 10px 14px; flex-wrap: wrap; text-align: center; justify-content: center; }
+  .hero-specs { flex-wrap: wrap; margin-top: 40px; padding-top: 32px; }
+  .hero-spec { width: 50%; padding: 16px 12px; }
   .hero-spec:nth-child(2n) { border-right: none; }
   .hero-spec:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.15); }
-  .btn {
-    display: block;
-    padding: 16px 20px;
-    text-align: center;
+
+  /* 問題セクション */
+  .problem-item, .problem-item:nth-child(even) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
   }
-}
-@media (max-width: 680px) {
-  .feature-panel { padding: 32px 24px; }
+  .problem-item-illust-wrap { width: 160px; height: 160px; }
+  .problem-item-bubble::before,
+  .problem-item-bubble::after { display: none; }
+
+  /* フィーチャー */
+  .feature-item, .feature-item.reverse { grid-template-columns: 1fr; }
+  .feature-item.reverse .feature-panel,
+  .feature-item.reverse .feature-text { order: 0; }
+  .feature-panel { padding: 32px 24px; min-height: 180px; }
+  .feature-text { padding: 32px 24px; }
+  .feature-panel-ja { font-size: clamp(26px, 6vw, 40px); }
+
+  /* ステップ */
+  .steps { grid-template-columns: 1fr 1fr; }
   .step:nth-child(2n) { border-right: none; }
+
+  /* Before/After写真 */
+  .ba-photos { grid-template-columns: 1fr; margin: 0 -24px 40px; }
+  .ba-photo-item img { height: 260px; }
+
+  /* Before/After比較表 */
+  .ba-header, .ba-pair { grid-template-columns: 1fr; }
+  .ba-pair-before { border-right: none; border-bottom: 2px solid #ede8e0; }
+  .ba-head-after { border-left: none; border-top: 1px solid rgba(255,255,255,.2); }
+
+  /* スペックカード */
+  .specs-grid { grid-template-columns: 1fr; }
+
+  /* CTA連絡ボタン */
+  .contact-buttons { flex-direction: column; align-items: stretch; }
+  .btn-phone, .btn-fax-wrap { max-width: 100%; }
+  .btn-phone-num, .btn-fax-num { font-size: 22px; }
+  .cta-downloads { flex-direction: column; }
+  .btn-dl { justify-content: center; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .cta .container { padding: 44px 20px; }
+
+  /* フローティングCTA */
+  .floating-cta { right: 10px; bottom: 16px; }
+  .floating-cta-btn { padding: 10px 16px; gap: 8px; }
+  .floating-cta-sub { font-size: 10px; }
+  .floating-cta-tel { font-size: 15px; }
+
+  /* 使用者の声 */
+  .voices-grid { grid-template-columns: 1fr; }
+
+  /* 汎用 */
+  .btn { display: block; padding: 16px 20px; text-align: center; }
+  .problem-bridge { margin: 48px -24px 0; }
+  .award-badge { width: 70%; }
 }
-@media (max-width: 380px) {
+
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; }
   .step { border-right: none; border-bottom: 1px solid #ede8e0; }
   .step:last-child { border-bottom: none; }
+  .howto-note { grid-template-columns: 1fr; }
+  .hero-spec-num { font-size: clamp(18px, 4.5vw, 28px); }
 }
 </style>
 </head>
 <body>
 <!-- 固定CTAボタン -->
 <div class="floating-cta" id="floatingCta">
-  <a href="#contact" class="floating-cta-btn">
-    <span>🛒</span>注文する
+  <a href="tel:0763621170" class="floating-cta-btn">
+    <span>📞</span>
+    <span class="floating-cta-sub">ご注文はこちらから</span>
+    <span class="floating-cta-tel">0763-62-1170</span>
   </a>
-  <div class="floating-cta-label">お問い合わせ・ご購入</div>
 </div>
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <div class="nav-logo">川田ニット株式会社</div>
-  <a href="#contact" class="nav-btn">お問い合わせ</a>
+  <a class="nav-logo" href="https://www.kawada-knit.co.jp/" target="_blank" rel="noopener">
+    <img src="logo.png" alt="川田ニット株式会社ロゴ">
+    川田ニット株式会社
+  </a>
+  <a href="#contact" class="nav-btn">お問合わせ・ご注文</a>
 </nav>
 <!-- ═══ 01. HERO ═══ -->
 <section class="hero">
@@ -948,7 +1344,7 @@ footer {
       <span class="hero-tag">1人で施工できる</span>
     </div>
     <div class="hero-award">
-      🏆&ensp;ビジネスプランコンテスト「未来産業学特別賞」受賞
+      🏆&ensp;ビジネスプランコンテスト「未来希望枠特別賞（最高賞）」受賞
     </div>
     <div class="hero-specs">
       <div class="hero-spec">
@@ -988,29 +1384,57 @@ footer {
     <span class="section-eyebrow">The Problem</span>
     <h2 class="section-title">こんな悩みはありませんか？</h2>
     <p class="problem-lead">
-      農道・畦畔・法面の草刈りは、年間を通じて繰り返し必要。<br>
-      体力的な負担と時間コストが、毎年積み重なります。
+      あなたはどちらのタイプですか？<br>
+      どちらにも、しばラク楽してねットが解決策をもたらします。
     </p>
+
     <div class="problem-grid">
       <div class="problem-item">
-        <div class="problem-item-num">01</div>
-        <h3 class="problem-item-title">年に数回の草刈りが体力的に大変</h3>
-        <p class="problem-item-body">真夏の炎天下での草刈り作業は、体力・時間ともに大きな負担。農家さんだけでなく、土地を持つすべての方の悩みです。</p>
+        <div class="problem-item-illust-wrap">
+          <img class="problem-item-illust original" src="person1.png" alt="">
+          <img class="problem-item-illust solved" src="person1-solved.png" alt="">
+        </div>
+        <div class="problem-item-bubble">
+
+          <h3 class="problem-item-title">年に何度も草刈りで体力・時間を消耗する</h3>
+          <p class="problem-item-body">真夏の炎天下での草刈りは重労働。毎年繰り返す作業が体力的にも時間的にも大きな負担に。</p>
+        </div>
       </div>
       <div class="problem-item">
-        <div class="problem-item-num">02</div>
-        <h3 class="problem-item-title">高齢化・人手不足で管理が追いつかない</h3>
-        <p class="problem-item-body">担い手の減少が進む農業現場では、定期的な草刈り作業の継続が困難に。気づけば雑草が生い茂っている状況が続きます。</p>
+        <div class="problem-item-illust-wrap">
+          <img class="problem-item-illust original" src="person2.png" alt="">
+          <img class="problem-item-illust solved" src="person2-solved.png" alt="">
+        </div>
+        <div class="problem-item-bubble">
+
+          <h3 class="problem-item-title">除草剤は環境・土壌への影響が心配</h3>
+          <p class="problem-item-body">楽になりたいけれど、土壌や水質・生き物への影響が気になって、なかなか踏み切れない。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-grid has-sheet">
+      <div class="problem-item">
+        <div class="problem-item-illust-wrap">
+          <img class="problem-item-illust original" src="person3.png" alt="">
+          <img class="problem-item-illust solved" src="person3-solved.png" alt="">
+        </div>
+        <div class="problem-item-bubble">
+
+          <h3 class="problem-item-title">景観が悪い（黒いシートが目立つ）</h3>
+          <p class="problem-item-body">黒い防草シートが景観から浮いてしまう。せっかくの農地や庭が殺風景になってしまう。</p>
+        </div>
       </div>
       <div class="problem-item">
-        <div class="problem-item-num">03</div>
-        <h3 class="problem-item-title">放棄農地・遊休地の管理が重荷に</h3>
-        <p class="problem-item-body">使っていない農地でも草刈りは必要。管理コストが高すぎて手放すしかない、という方が増えています。</p>
-      </div>
-      <div class="problem-item">
-        <div class="problem-item-num">04</div>
-        <h3 class="problem-item-title">除草剤は環境・土壌への影響が心配</h3>
-        <p class="problem-item-body">楽になりたいが、除草剤で土壌や水質、周辺の生き物への影響が出ないか不安。自然にやさしい方法が見つからない。</p>
+        <div class="problem-item-illust-wrap">
+          <img class="problem-item-illust original" src="person4.png" alt="">
+          <img class="problem-item-illust solved" src="person4-solved.png" alt="">
+        </div>
+        <div class="problem-item-bubble">
+
+          <h3 class="problem-item-title">耐久性が低く、すぐ劣化・破れてしまう</h3>
+          <p class="problem-item-body">数年で破れて張り替えが必要に。結局コストがかかり、長持ちするシートが見つからない。</p>
+        </div>
       </div>
     </div>
     <div class="problem-bridge-img">
@@ -1037,8 +1461,8 @@ footer {
       <div class="feature-num">Feature 01</div>
       <h3 class="feature-title"><span>芝みたいでキレイ。</span><br>景観を守る</h3>
       <p class="feature-body">
-        雑草を無機質なシートで隠すのではなく、鮮やかなグリーンのネットで覆います。
-        周囲の自然から浮くことなく、まるで美しい芝生のような景観を保ちます。
+        雑草を無機質なシートで隠すのではなく、<br>鮮やかなグリーンのネットで覆います。<br>
+        周囲の自然から浮くことなく、美しい芝生のような景観を保ちます。
       </p>
       <ul class="feature-points">
         <li>草刈り後の殺風景な状態が続かない</li>
@@ -1056,8 +1480,8 @@ footer {
       <div class="feature-num">Feature 02</div>
       <h3 class="feature-title"><span>除草剤は不要。</span><br>土壌を生かす</h3>
       <p class="feature-body">
-        光も水も通すネットだから、雑草はネットの下で根を張ります。
-        これが法面や畦畔を崩れにくくし、土砂の流出を防ぎます。
+        光も水も通すネットだから、雑草はネットの下で根を張ります。<br>
+        これが法面や畦畔を崩れにくくし、土砂の流出を防ぎます。<br>
         土が痩せる心配もありません。
       </p>
       <ul class="feature-points">
@@ -1077,9 +1501,8 @@ footer {
       <div class="feature-num">Feature 03</div>
       <h3 class="feature-title"><span>1人でもラクラク。</span><br>約8年の高耐久</h3>
       <p class="feature-body">
-        ロール状だから、1人で広げながら施工できます。
-        UV耐候剤を配合しており、一度の施工で約8年間、
-        草刈りからあなたを解放します。
+        ロール状だから、1人で広げながら施工できます。<br>
+        UV耐候剤を配合しており、一度の施工で<br>約8年間、草刈りからあなたを解放します。
       </p>
       <ul class="feature-points">
         <li>重機・特殊な道具は不要</li>
@@ -1098,8 +1521,8 @@ footer {
       <div class="feature-num">Feature 04</div>
       <h3 class="feature-title"><span>軽量で伸縮性があり、</span><br>風にも強い</h3>
       <p class="feature-body">
-        ネット素材なので軽くて運搬・展開が楽々。
-        適度な伸縮性があり、地形の変化にも追従します。
+        ネット素材なので軽くて運搬・展開が楽々。<br>
+        適度な伸縮性があり、地形の変化にも追従します。<br>
         破れにくく、強風にも耐える耐候設計です。
       </p>
       <ul class="feature-points">
@@ -1119,9 +1542,8 @@ footer {
       <div class="feature-num">Feature 05</div>
       <h3 class="feature-title"><span>0.5mから4mまで、</span><br>幅広いサイズ展開</h3>
       <p class="feature-body">
-        細い農道の端から広大な法面まで、さまざまな場所に対応できるよう
-        8サイズを用意しています。
-        現場の状況に合わせて最適なサイズをお選びいただけます。
+        細い農道から広大な法面まで、<br>さまざまな場所に対応できるよう8サイズを用意。<br>
+        現場の状況に合わせた最適なサイズをお選びいただけます。
       </p>
       <ul class="feature-points">
         <li>幅50cm〜4mの8サイズ展開</li>
@@ -1130,7 +1552,17 @@ footer {
     </div>
   </div>
 </section>
-<!-- ═══ 05. HOW TO USE ═══ -->
+<!-- ═══ 05. AWARD ═══ -->
+<section class="award section-pad">
+  <div class="container">
+    <span class="section-eyebrow">Recognition</span>
+    <h2 class="section-title">確かな評価をいただいています</h2>
+    <img class="award-badge" src="award-badge.png" alt="受賞バッジ">
+    <h3 class="award-title">農業・土木現場の課題解決が<br>高く評価されました</h3>
+    <p class="award-detail">ビジネスプランコンテスト<br>未来希望枠特別賞（最高賞）受賞</p>
+  </div>
+</section>
+<!-- ═══ 06. HOW TO USE ═══ -->
 <section class="howto section-pad">
   <div class="container">
     <span class="section-eyebrow">How to Use</span>
@@ -1178,11 +1610,11 @@ footer {
       </div>
       <div class="howto-note-item">
         <strong>重ね合わせについて</strong>
-        ネットの重なり部分には最低20cmを確保してください。端の固定はストッパーを入れず重ねるだけでOKです。
+        ネットの重なり部分には最低20cmを確保してください。<br>端の固定はストッパーを入れず重ねるだけでOKです。
       </div>
       <div class="howto-note-item">
         <strong>推奨工具</strong>
-        木槌またはプラスチックハンマーを使用してストッパーを打ち込んでください。金属ハンマーは変形の原因になります。
+        木槌またはプラスチックハンマーで打ち込んでください。<br>金属ハンマーは変形の原因になります。
       </div>
     </div>
   </div>
@@ -1284,6 +1716,13 @@ footer {
             <div class="spec-card-sub">雑草抑制ネット</div>
           </div>
         </div>
+        <div class="spec-card-price">
+          <div>
+            <div class="spec-price-label">販売価格（税込）</div>
+            <div class="spec-price-value">お問合せください<span class="spec-price-unit"></span></div>
+          </div>
+          <div class="spec-price-note">サイズにより異なります</div>
+        </div>
         <div class="spec-card-body">
           <div class="spec-row"><span class="spec-key">材質</span><span class="spec-val">ポリエチレン（UV耐候剤配合）</span></div>
           <div class="spec-row"><span class="spec-key">耐久性</span><span class="spec-val">約8年</span></div>
@@ -1312,6 +1751,13 @@ footer {
             <div class="spec-card-sub">固定ピン</div>
           </div>
         </div>
+        <div class="spec-card-price">
+          <div>
+            <div class="spec-price-label">販売価格（税込）</div>
+            <div class="spec-price-value">お問合せください</div>
+          </div>
+          <div class="spec-price-note">数量により異なります</div>
+        </div>
         <div class="spec-card-body">
           <div class="spec-row"><span class="spec-key">材質</span><span class="spec-val">ポリプロピレン</span></div>
           <div class="spec-row"><span class="spec-key">寸法</span><span class="spec-val">200mm</span></div>
@@ -1319,29 +1765,89 @@ footer {
           <div class="spec-row"><span class="spec-key">特徴</span><span class="spec-val">耐衝撃・耐候性。反射・粉化しない</span></div>
           <div class="stopper-tip">
             <strong>使用本数の目安</strong>
-            <p>幅1m以下 × 50m に対しストッパー150本<br>
-            幅1.5〜2m × 50m に対しストッパー200本<br>
-            幅3〜4m × 25m に対しストッパー150本</p>
+            <p>幅1m以下 → 50m に対しストッパー150本<br>
+            幅1.5〜2m → 50m に対しストッパー200本<br>
+            幅3〜4m → 25m に対しストッパー150本</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- ═══ 08. AWARD ═══ -->
-<section class="award section-pad">
-  <div class="container">
-    <span class="section-eyebrow">Recognition</span>
-    <h2 class="section-title">確かな評価をいただいています</h2>
-    <div class="award-badge">
-      <div class="award-badge-icon">🏆</div>
-      <div class="award-badge-text">受賞</div>
+<!-- ═══ CM動画 ═══ -->
+<section class="cm-section">
+  <span class="section-eyebrow">Movie</span>
+  <h2 class="section-title">CM 公開中！</h2>
+  <a class="cm-video-wrap" href="https://youtu.be/zshjRG8u8NM" target="_blank" rel="noopener">
+    <img src="https://img.youtube.com/vi/zshjRG8u8NM/maxresdefault.jpg" alt="しばラク楽してねット CM">
+    <div class="cm-play-btn">
+      <div class="cm-play-circle">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="cm-play-label">YouTube で見る</div>
     </div>
-    <h3 class="award-title">農業・土木現場の課題解決が<br>高く評価されました</h3>
-    <p class="award-detail">ビジネスプランコンテスト「未来産業学特別賞」受賞</p>
-    <p class="award-body">
-      雑草管理という農業現場の根深い課題を、革新的かつ持続可能な製品で解決するモデルとして、審査委員会より特別賞が授与されました。
-    </p>
+  </a>
+</section>
+<!-- ═══ 使用者の声 ═══ -->
+<section class="voices section-pad">
+  <div class="container">
+    <span class="section-eyebrow">Voice of Users</span>
+    <h2 class="section-title">ご利用いただいた方の声</h2>
+    <div class="voices-grid">
+
+      <!-- 声1 -->
+      <div class="voice-card">
+        <span class="voice-tag">草刈りの負担でお悩みだった方</span>
+        <div class="voice-person">
+          <img class="voice-avatar" src="person1-solved.png" alt="">
+          <div class="voice-meta">
+            <span class="voice-name">30代・農家</span>
+          </div>
+        </div>
+        <p class="voice-body">毎年夏の草刈りが本当につらくて、年齢的にも限界を感じていました。でも施工してからは草刈りが必要なくなり、その時間を家族と過ごせるようになりました。</p>
+        <div class="voice-result">一度の施工で8年間、草刈り不要になりました</div>
+      </div>
+
+      <!-- 声2 -->
+      <div class="voice-card">
+        <span class="voice-tag">除草剤をご使用の方</span>
+        <div class="voice-person">
+          <img class="voice-avatar" src="person2-solved.png" alt="">
+          <div class="voice-meta">
+            <span class="voice-name">40代・農家</span>
+          </div>
+        </div>
+        <p class="voice-body">除草剤を使いたくなかったのですが、それ以外に良い方法がなくて…。しばラク楽してねットなら環境にも優しいし、土壌も傷めないので安心して使えています。</p>
+        <div class="voice-result">除草剤ゼロで環境にやさしい管理ができています</div>
+      </div>
+
+      <!-- 声3 -->
+      <div class="voice-card">
+        <span class="voice-tag">景観にお悩みだった方</span>
+        <div class="voice-person">
+          <img class="voice-avatar" src="person3-solved.png" alt="">
+          <div class="voice-meta">
+            <span class="voice-name">40代・土地オーナー</span>
+          </div>
+        </div>
+        <p class="voice-body">黒い防草シートを使っていたのですが、見た目が気になっていました。グリーンのネットは周りの風景に馴染んで、まるで芝生みたい。来客にも好評です。</p>
+        <div class="voice-result">景観がキレイになり、近所からも褒められました</div>
+      </div>
+
+      <!-- 声4 -->
+      <div class="voice-card">
+        <span class="voice-tag">耐久性にお悩みだった方</span>
+        <div class="voice-person">
+          <img class="voice-avatar" src="person4-solved.png" alt="">
+          <div class="voice-meta">
+            <span class="voice-name">50代・遊休地オーナー</span>
+          </div>
+        </div>
+        <p class="voice-body">以前使っていたシートは2〜3年で破れてしまい、そのたびに張り替えが必要でコストがかかっていました。しばラク楽してねットに変えてから、そんな手間が一切なくなりました。</p>
+        <div class="voice-result">UV耐候剤配合で約8年、長持ちしています</div>
+      </div>
+
+    </div>
   </div>
 </section>
 <!-- ═══ 09. CTA ═══ -->
@@ -1350,37 +1856,75 @@ footer {
     <span class="section-eyebrow">Contact</span>
     <h2 class="section-title">あなたの土地に合うサイズを<br>一緒に見つけましょう</h2>
     <p class="cta-lead">
-      サンプルのご依頼・お見積もり・ご質問、<br>
-      担当者が丁寧にご対応いたします。
+      まずはお電話でお気軽にご相談ください。<br>
+      サンプルのご依頼・お見積もり・ご質問、担当者が丁寧にご対応します。
     </p>
+
+    <!-- 電話・FAX 横並び -->
+    <div class="contact-buttons">
+      <a href="tel:0763621170" class="btn-phone">
+        <span class="btn-phone-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+          </svg>
+        </span>
+        <span class="btn-phone-text">
+          <span class="btn-phone-label">お電話でのお問い合わせ</span>
+          <span class="btn-phone-num">0763-62-1170</span>
+        </span>
+      </a>
+      <div class="btn-fax-wrap">
+        <span class="btn-fax-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#3a6e30">
+            <path d="M19 9h-1V3H8v6H7c-1.66 0-3 1.34-3 3v5h4v3h10v-3h4v-5c0-1.66-1.34-3-3-3zM10 5h6v4h-6V5zm8 14H8v-4h10v4zm2-5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+          </svg>
+        </span>
+        <div class="btn-fax-label">FAXでのお申込みはこちら</div>
+        <div class="btn-fax-num">0763-62-0448</div>
+      </div>
+    </div>
+
+    <!-- ダウンロードボタン（FAXボックス直下） -->
+    <div class="cta-downloads">
+      <a href="catalog.pdf" class="btn-dl" download>
+        <span class="btn-dl-icon">📄</span>資料・カタログをダウンロード
+      </a>
+      <a href="order-form.pdf" class="btn-dl" download>
+        <span class="btn-dl-icon">📋</span>FAX申込み用紙をダウンロード
+      </a>
+    </div>
+
+    <!-- 連絡先グリッド -->
     <div class="contact-grid">
       <div class="contact-cell">
         <div class="contact-label">担当 携帯</div>
-        <div class="contact-value"><a href="tel:0805858893">080-5858-5893</a></div>
-      </div>
-      <div class="contact-cell">
-        <div class="contact-label">TEL / FAX</div>
-        <div class="contact-value">0763-62-1170<br>0763-62-0448</div>
+        <div class="contact-value"><a href="tel:08058585893">080-5858-5893</a></div>
       </div>
       <div class="contact-cell">
         <div class="contact-label">メールアドレス</div>
-        <div class="contact-value sm"><a href="mailto:kwd-kaihatsuservice@celery.ocn.ne.jp">kwd-kaihatsuservice<br>@celery.ocn.ne.jp</a></div>
+        <div class="contact-value sm"><a href="mailto:kwd-kaihatsuservice@celery.ocn.ne.jp">kwd-kaihatsuservice@celery.ocn.ne.jp</a></div>
       </div>
       <div class="contact-cell">
         <div class="contact-label">所在地</div>
-        <div class="contact-value sm">〒939-1867<br>富山県南砺市梅野新1370</div>
+        <div class="contact-value sm">〒939-1867 富山県南砺市梅野新1370</div>
+      </div>
+      <div class="contact-cell">
+        <div class="contact-label">受付時間</div>
+        <div class="contact-value sm">平日 9:00〜17:00</div>
       </div>
     </div>
-    <a href="mailto:kwd-kaihatsuservice@celery.ocn.ne.jp" class="btn">お問い合わせ・ご購入はこちら</a>
-    <p class="cta-note">2営業日以内にご返答いたします</p>
+
   </div>
 </section>
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p class="footer-logo">川田ニット株式会社</p>
+    <p class="footer-logo">
+      <img src="logo.png" alt="川田ニット株式会社ロゴ">
+      川田ニット株式会社
+    </p>
     <p class="footer-info">
-      〒939-1867 富山県南砺市城端1370　TEL: 0763-62-1170 ／ FAX: 0763-62-0448<br>
+      〒939-1867 富山県南砺市梅野新1370　TEL: 0763-62-1170 ／ FAX: 0763-62-0448<br>
       © 2024 Kawada Knit Co., Ltd. All Rights Reserved.
     </p>
   </div>
