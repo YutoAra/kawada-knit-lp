@@ -1049,6 +1049,20 @@ h1, h2, h3 { font-weight: 500; }
   letter-spacing: .1em;
   text-shadow: 0 1px 4px rgba(0,0,0,.5);
 }
+/* 価格表 */
+.price-table {
+  width: 100%; border-collapse: collapse; font-size: 12px;
+}
+.price-table th {
+  background: #3a6e30; color: #fff;
+  padding: 6px 10px; text-align: left; font-weight: 600; letter-spacing: .04em;
+}
+.price-table td {
+  padding: 6px 10px; border-bottom: 1px solid #e8f0e0; color: #3E3A39;
+}
+.price-table td:last-child { font-weight: 700; color: #3a6e30; text-align: right; }
+.price-table tr:last-child td { border-bottom: none; }
+.price-table tr:nth-child(odd) td { background: #f8fbf5; }
 /* ── 使用者の声 ── */
 .voices {
   background-image:
@@ -1348,7 +1362,7 @@ footer {
     </div>
     <div class="hero-specs">
       <div class="hero-spec">
-        <div class="hero-spec-num">約8年</div>
+        <div class="hero-spec-num">4〜6年</div>
         <div class="hero-spec-label">耐久年数</div>
       </div>
       <div class="hero-spec">
@@ -1455,18 +1469,18 @@ footer {
   <div class="feature-item">
     <div class="feature-panel fp1" data-num="01">
       <div class="feature-panel-en">Feature 01</div>
-      <div class="feature-panel-ja">景観を守る。<em>芝みたいにキレイ</em></div>
+      <div class="feature-panel-ja">景観を守る。<em>目立たないネット素材</em></div>
     </div>
     <div class="feature-text">
       <div class="feature-num">Feature 01</div>
-      <h3 class="feature-title"><span>芝みたいでキレイ。</span><br>景観を守る</h3>
+      <h3 class="feature-title"><span>景観への影響を最小限に。</span><br>目立たない素材設計</h3>
       <p class="feature-body">
-        雑草を無機質なシートで隠すのではなく、<br>鮮やかなグリーンのネットで覆います。<br>
-        周囲の自然から浮くことなく、美しい芝生のような景観を保ちます。
+        黒い防草シートと違い、景観になじむ色調のネット素材を使用。<br>
+        草刈り後の殺風景な状態が続くことなく、すっきりした見た目を維持します。
       </p>
       <ul class="feature-points">
         <li>草刈り後の殺風景な状態が続かない</li>
-        <li>周辺の風景に溶け込む自然なグリーン</li>
+        <li>黒いシートより目立たず景観になじむ</li>
       </ul>
     </div>
   </div>
@@ -1499,14 +1513,14 @@ footer {
     </div>
     <div class="feature-text">
       <div class="feature-num">Feature 03</div>
-      <h3 class="feature-title"><span>1人でもラクラク。</span><br>約8年の高耐久</h3>
+      <h3 class="feature-title"><span>1人でもラクラク。</span><br>4〜6年の高耐久</h3>
       <p class="feature-body">
         ロール状だから、1人で広げながら施工できます。<br>
-        UV耐候剤を配合しており、一度の施工で<br>約8年間、草刈りからあなたを解放します。
+        UV耐候剤を配合しており、一度の施工で<br>4〜6年、草刈りからあなたを解放します。
       </p>
       <ul class="feature-points">
         <li>重機・特殊な道具は不要</li>
-        <li>UV耐候剤配合で約8年の高耐久</li>
+        <li>UV耐候剤配合で4〜6年の高耐久</li>
         <li>カメムシ等の害虫対策にも効果的</li>
       </ul>
     </div>
@@ -1587,7 +1601,7 @@ footer {
       <div class="step">
         <div class="step-num">04</div>
         <h3 class="step-title">完成。あとは放置</h3>
-        <p class="step-body">施工完了。以降は草刈り不要。約8年間、管理の手間から解放されます。</p>
+        <p class="step-body">施工完了。以降は草刈り不要。4〜6年、管理の手間から解放されます。</p>
       </div>
     </div>
     <!-- 施工写真 -->
@@ -1638,8 +1652,8 @@ footer {
         <img src="after.jpg" alt="施工後：しばラク楽してねット施工済みの法面">
         <div class="ba-photo-badge after">✓ &ensp;AFTER</div>
         <div class="ba-photo-caption">
-          <strong>施工後の鮮やかなグリーン</strong>
-          草刈りゼロ・景観もキレイに保たれる
+          <strong>施工後はすっきりした景観に</strong>
+          草刈りゼロ・目立たないネットで景観を維持
         </div>
       </div>
     </div>
@@ -1658,7 +1672,7 @@ footer {
         </div>
         <div class="ba-pair-after">
           <div class="ba-icon ok">✓</div>
-          <div class="ba-text"><strong>草刈りがほぼ不要に</strong>一度施工すれば約8年間、管理の手間から解放される。</div>
+          <div class="ba-text"><strong>草刈りがほぼ不要に</strong>一度施工すれば4〜6年、管理の手間から解放される。</div>
         </div>
       </div>
       <!-- 行2 -->
@@ -1669,7 +1683,7 @@ footer {
         </div>
         <div class="ba-pair-after">
           <div class="ba-icon ok">✓</div>
-          <div class="ba-text"><strong>芝みたいにキレイな景観</strong>鮮やかなグリーンが風景に溶け込み、美観を維持。</div>
+          <div class="ba-text"><strong>景観になじむネット素材</strong>黒いシートより目立たず、すっきりした見た目を維持。</div>
         </div>
       </div>
       <!-- 行3 -->
@@ -1716,16 +1730,23 @@ footer {
             <div class="spec-card-sub">雑草抑制ネット</div>
           </div>
         </div>
-        <div class="spec-card-price">
-          <div>
-            <div class="spec-price-label">販売価格（税込）</div>
-            <div class="spec-price-value">お問合せください<span class="spec-price-unit"></span></div>
-          </div>
-          <div class="spec-price-note">サイズにより異なります</div>
+        <div class="spec-card-price" style="flex-direction:column;align-items:flex-start;gap:12px;">
+          <div class="spec-price-label">販売価格（税込）</div>
+          <table class="price-table">
+            <tr><th>規格</th><th>価格（税込）</th></tr>
+            <tr><td>幅50cm × 50m</td><td>8,400円</td></tr>
+            <tr><td>幅1m × 50m</td><td>14,000円</td></tr>
+            <tr><td>幅1.5m × 50m</td><td>20,800円</td></tr>
+            <tr><td>幅2m × 50m</td><td>28,200円</td></tr>
+            <tr><td>幅2.5m × 50m</td><td>35,600円</td></tr>
+            <tr><td>幅3m × 25m</td><td>22,200円</td></tr>
+            <tr><td>幅3.5m × 25m</td><td>27,900円</td></tr>
+            <tr><td>幅4m × 25m</td><td>29,800円</td></tr>
+          </table>
         </div>
         <div class="spec-card-body">
           <div class="spec-row"><span class="spec-key">材質</span><span class="spec-val">ポリエチレン（UV耐候剤配合）</span></div>
-          <div class="spec-row"><span class="spec-key">耐久性</span><span class="spec-val">約8年</span></div>
+          <div class="spec-row"><span class="spec-key">耐久性</span><span class="spec-val">4〜6年</span></div>
           <div class="spec-row"><span class="spec-key">用途</span><span class="spec-val">農道・畦畔・法面の雑草対策、滑止め、害虫対策</span></div>
           <div class="spec-row" style="flex-direction:column;align-items:flex-start;gap:8px">
             <span class="spec-key">サイズ展開</span>
@@ -1751,12 +1772,13 @@ footer {
             <div class="spec-card-sub">固定ピン</div>
           </div>
         </div>
-        <div class="spec-card-price">
-          <div>
-            <div class="spec-price-label">販売価格（税込）</div>
-            <div class="spec-price-value">お問合せください</div>
-          </div>
-          <div class="spec-price-note">数量により異なります</div>
+        <div class="spec-card-price" style="flex-direction:column;align-items:flex-start;gap:12px;">
+          <div class="spec-price-label">販売価格（税込）</div>
+          <table class="price-table">
+            <tr><th>規格</th><th>価格（税込）</th></tr>
+            <tr><td>1袋 100本入り</td><td>4,000円</td></tr>
+            <tr><td>3袋以上（1袋あたり）</td><td>3,200円</td></tr>
+          </table>
         </div>
         <div class="spec-card-body">
           <div class="spec-row"><span class="spec-key">材質</span><span class="spec-val">ポリプロピレン</span></div>
@@ -1805,7 +1827,7 @@ footer {
           </div>
         </div>
         <p class="voice-body">毎年夏の草刈りが本当につらくて、年齢的にも限界を感じていました。でも施工してからは草刈りが必要なくなり、その時間を家族と過ごせるようになりました。</p>
-        <div class="voice-result">一度の施工で8年間、草刈り不要になりました</div>
+        <div class="voice-result">一度の施工で4〜6年、草刈り不要になりました</div>
       </div>
 
       <!-- 声2 -->
@@ -1830,8 +1852,8 @@ footer {
             <span class="voice-name">40代・土地オーナー</span>
           </div>
         </div>
-        <p class="voice-body">黒い防草シートを使っていたのですが、見た目が気になっていました。グリーンのネットは周りの風景に馴染んで、まるで芝生みたい。来客にも好評です。</p>
-        <div class="voice-result">景観がキレイになり、近所からも褒められました</div>
+        <p class="voice-body">黒い防草シートを使っていたのですが、見た目が気になっていました。このネットは黒いシートより目立たず、景観への影響が少ないのが気に入っています。来客にも好評です。</p>
+        <div class="voice-result">黒いシートより目立たず、景観が改善されました</div>
       </div>
 
       <!-- 声4 -->
@@ -1844,7 +1866,7 @@ footer {
           </div>
         </div>
         <p class="voice-body">以前使っていたシートは2〜3年で破れてしまい、そのたびに張り替えが必要でコストがかかっていました。しばラク楽してねットに変えてから、そんな手間が一切なくなりました。</p>
-        <div class="voice-result">UV耐候剤配合で約8年、長持ちしています</div>
+        <div class="voice-result">UV耐候剤配合で4〜6年、長持ちしています</div>
       </div>
 
     </div>
