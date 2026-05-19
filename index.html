@@ -1014,40 +1014,7 @@ h1, h2, h3 { font-weight: 500; }
   box-shadow: 0 16px 64px rgba(0,0,0,.4);
   aspect-ratio: 16 / 9;
   display: block;
-  text-decoration: none;
-  cursor: pointer;
-}
-.cm-video-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .4s ease;
-}
-.cm-video-wrap:hover img { transform: scale(1.03); }
-.cm-play-btn {
-  position: absolute;
-  inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 16px;
-  background: rgba(0,0,0,.3);
-  transition: background .3s;
-}
-.cm-video-wrap:hover .cm-play-btn { background: rgba(0,0,0,.15); }
-.cm-play-circle {
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.92);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 24px rgba(0,0,0,.3);
-  transition: transform .3s;
-}
-.cm-video-wrap:hover .cm-play-circle { transform: scale(1.1); }
-.cm-play-circle svg { width: 32px; height: 32px; fill: #c00; margin-left: 4px; }
-.cm-play-label {
-  font-size: 14px; font-weight: 600; color: #fff;
-  letter-spacing: .1em;
-  text-shadow: 0 1px 4px rgba(0,0,0,.5);
+  width: 100%;
 }
 /* 価格表 */
 .price-table {
@@ -1800,15 +1767,9 @@ footer {
 <section class="cm-section">
   <span class="section-eyebrow">Movie</span>
   <h2 class="section-title">CM 公開中！</h2>
-  <a class="cm-video-wrap" href="https://youtu.be/zshjRG8u8NM" target="_blank" rel="noopener">
-    <img src="https://img.youtube.com/vi/zshjRG8u8NM/maxresdefault.jpg" alt="しばラク楽してねット CM">
-    <div class="cm-play-btn">
-      <div class="cm-play-circle">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="cm-play-label">YouTube で見る</div>
-    </div>
-  </a>
+  <video class="cm-video-wrap" controls poster="cm-thumbnail.jpg">
+    <source src="20260515_川田ニット防草ネットCM.mp4" type="video/mp4">
+  </video>
 </section>
 <!-- ═══ 使用者の声 ═══ -->
 <section class="voices section-pad">
