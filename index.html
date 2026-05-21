@@ -1,8 +1,37 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!--
+  ================================================================
+  ★★ 公開前に変更が必要な箇所（全2項目） ★★
+  ================================================================
+  [1] 公開URL（★要変更 A）
+      現在値: https://www.kawada-knit.co.jp/shibaraku/
+      使用箇所: canonical タグ / og:url / JSON-LD の logo URL
+      → 正式な公開URLに差し替えてください。
+
+  [2] JSON-LD の logo URL（★要変更 B）
+      現在値: https://www.kawada-knit.co.jp/shibaraku/logo.png
+      → [1] の公開URLに合わせて変更してください。
+  ================================================================
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SEO -->
+<meta name="description" content="防草ネット「しばラク楽してねット」は除草剤不要・UV耐候剤配合で4〜6年の高耐久。景観にやさしく1人で簡単施工。草刈りの手間を減らし、家族との時間を取り戻しましょう。川田ニット株式会社（富山県南砺市）。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.kawada-knit.co.jp/shibaraku/"><!-- ★要変更 A -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="休日の草刈りを、家族との時間に変える。| しばラク楽してねット！">
+<meta property="og:description" content="防草ネット「しばラク楽してねット」は除草剤不要・UV耐候剤配合で4〜6年の高耐久。景観にやさしく1人で簡単施工。草刈りの手間を減らしましょう。">
+<meta property="og:url" content="https://www.kawada-knit.co.jp/shibaraku/"><!-- ★要変更 A -->
+<meta property="og:site_name" content="川田ニット株式会社">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="休日の草刈りを、家族との時間に変える。| しばラク楽してねット！">
+<meta name="twitter:description" content="防草ネット「しばラク楽してねット」は除草剤不要・UV耐候剤配合で4〜6年の高耐久。1人で簡単施工。">
 <title>休日の草刈りを、家族との時間に変える。| しばラク楽してねット！</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1964,6 +1993,42 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.js-anim').forEach(el => observer.observe(el));
+</script>
+<!-- ★要変更 B: 下の logo の URL を公開URLに合わせて変更してください -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "川田ニット株式会社",
+  "url": "https://www.kawada-knit.co.jp/",
+  "logo": "https://www.kawada-knit.co.jp/shibaraku/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "富山県",
+    "addressLocality": "南砺市",
+    "streetAddress": "城端町城端2913"
+  },
+  "telephone": "0763-62-1113",
+  "email": "kwd-kaihatsuservice@celery.ocn.ne.jp"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "しばラク楽してねット",
+  "description": "除草剤不要・UV耐候剤配合の防草ネット。耐用年数4〜6年、景観にやさしい緑色。1人で簡単施工可能。",
+  "brand": {
+    "@type": "Brand",
+    "name": "川田ニット株式会社"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "JPY",
+    "availability": "https://schema.org/InStock"
+  }
+}
 </script>
 </body>
 </html>
